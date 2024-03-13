@@ -1,125 +1,134 @@
+import "../../Css/pages/landing-page.css";
+import "../../Css/themes/echo.css";
+import "../../Css/vendors/simplebar.css";
+import "../../Css/vendors/tippy.css";
+
+
+
 const Banner = () => {
+
+   
 
     return (
         <>
-            <div class="content transition-[margin,width] duration-100 xl:pl-3.5 pt-[54px] pb-16 relative z-10 group mode content--compact xl:ml-[275px] mode--light [&.content--compact]:xl:ml-[91px]">
-                <div class="px-5 mt-16">
-                    <div class="container">
-                        <div class="grid grid-cols-12 gap-x-6 gap-y-10">
-                            <div class="col-span-12">
+            <div className="content transition-[margin,width] duration-100 xl:pl-3.5 pt-[54px] pb-16 relative z-10 group mode content--compact xl:ml-[275px] mode--light [&.content--compact]:xl:ml-[91px]">
+                <div className="px-5 mt-16">
+                    <div className="container">
+                        <div className="grid grid-cols-12 gap-x-6 gap-y-10">
+                            <div className="col-span-12">
                                 <div>
-                                    <div class="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
-                                        <div class="text-base font-medium group-[.mode--light]:text-white">
+                                    <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
+                                        <div className="text-base font-medium group-[.mode--light]:text-white">
                                             Namada Explorer Dashboard
                                         </div>
                                 
                                     </div>
-                                    <div class="tab-content box box--stacked mt-3.5">
-                                        <div data-transition="" data-selector=".active" data-enter="transition-[visibility,opacity] ease-linear duration-150" data-enter-from="!p-0 !h-0 overflow-hidden invisible opacity-0" data-enter-to="visible opacity-100" data-leave="transition-[visibility,opacity] ease-linear duration-150" data-leave-from="visible opacity-100" data-leave-to="!p-0 !h-0 overflow-hidden invisible opacity-0" id="example-1" role="tabpanel" aria-labelledby="example-1-tab" class="tab-pane active flex flex-col gap-2 p-1.5 leading-relaxed xl:flex-row">
-                                            <div class="grid w-full grid-cols-4 gap-2">
-                                                <div class="box relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border-0 border-slate-200/60 bg-slate-50 bg-gradient-to-b from-theme-2/90 to-theme-1/[0.85] p-5 before:absolute before:right-0 before:top-0 before:-mr-[62%] before:h-[130%] before:w-full before:rotate-45 before:bg-gradient-to-b before:from-black/[0.15] before:to-transparent before:content-[''] sm:col-span-2 xl:col-span-1">
-                                                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/10">
-                                                        <i data-tw-merge="" data-lucide="database" class="stroke-[1] h-6 w-6 fill-white/10 text-white"></i>
+                                    <div className="tab-content box box--stacked mt-3.5">
+                                        <div data-transition="" data-selector=".active" data-enter="transition-[visibility,opacity] ease-linear duration-150" data-enter-from="!p-0 !h-0 overflow-hidden invisible opacity-0" data-enter-to="visible opacity-100" data-leave="transition-[visibility,opacity] ease-linear duration-150" data-leave-from="visible opacity-100" data-leave-to="!p-0 !h-0 overflow-hidden invisible opacity-0" id="example-1" role="tabpanel" aria-labelledby="example-1-tab" className="tab-pane active flex flex-col gap-2 p-1.5 leading-relaxed xl:flex-row">
+                                            <div className="grid w-full grid-cols-4 gap-2">
+                                                <div className="box relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border-0 border-slate-200/60 bg-slate-50 bg-gradient-to-b from-theme-2/90 to-theme-1/[0.85] p-5 before:absolute before:right-0 before:top-0 before:-mr-[62%] before:h-[130%] before:w-full before:rotate-45 before:bg-gradient-to-b before:from-black/[0.15] before:to-transparent before:content-[''] sm:col-span-2 xl:col-span-1">
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/10">
+                                                        <i data-tw-merge="" data-lucide="database" className="stroke-[1] h-6 w-6 fill-white/10 text-white"></i>
                                                     </div>
-                                                    <div class="mt-5 flex items-center">
-                                                        <div class="text-base text-white/70">
+                                                    <div className="mt-5 flex items-center">
+                                                        <div className="text-base text-white/70">
                                                             Chain ID
                                                         </div>
                                                     </div>
-                                                    <div class="mt-1 text-2xl font-medium text-white">
+                                                    <div className="mt-1 text-2xl font-medium text-white">
                                                             247,220
                                                     </div>
                                                     
                                                     
                                                 </div>
-                                                <div class="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                                                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="layout" class="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
+                                                        <i data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
                                                     </div>
-                                                    <div class="mt-5 flex items-center">
-                                                        <div class="text-base text-slate-500">
+                                                    <div className="mt-5 flex items-center">
+                                                        <div className="text-base text-slate-500">
                                                             Epoch
                                                         </div>                                                          
                                                     </div>
-                                                    <div class="mt-1 text-2xl font-medium">273,235</div>                                                                                                            
+                                                    <div className="mt-1 text-2xl font-medium">273,235</div>                                                                                                            
                                                 </div>
 
-                                                <div class="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                                                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="app-window" class="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
+                                                        <i data-tw-merge="" data-lucide="app-window" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
                                                     </div>
-                                                    <div class="mt-5 flex items-center">
-                                                        <div class="text-base text-slate-500">
+                                                    <div className="mt-5 flex items-center">
+                                                        <div className="text-base text-slate-500">
                                                             Block Height
                                                         </div>
                                                     </div>
 
-                                                    <div class="mt-1 text-2xl font-medium">124,625</div>
+                                                    <div className="mt-1 text-2xl font-medium">124,625</div>
                                                     
                                                     
                                                 </div>
-                                                <div class="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                                                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-info/10 bg-info/10">
-                                                        <i data-tw-merge="" data-lucide="box" class="stroke-[1] h-6 w-6 fill-info/10 text-info"></i>
+                                                <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-info/10 bg-info/10">
+                                                        <i data-tw-merge="" data-lucide="box" className="stroke-[1] h-6 w-6 fill-info/10 text-info"></i>
                                                     </div>
-                                                    <div class="mt-5 flex items-center">
-                                                            <div class="text-base text-slate-500">
+                                                    <div className="mt-5 flex items-center">
+                                                            <div className="text-base text-slate-500">
                                                             Transparent Transfers
                                                         </div>
                                                     </div>
 
-                                                    <div class="mt-1 text-2xl font-medium">749,220</div>
+                                                    <div className="mt-1 text-2xl font-medium">749,220</div>
                                                     
                                                     
                                                 </div>
-                                                <div class="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                                                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="layout" class="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
+                                                        <i data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
                                                     </div>
-                                                    <div class="mt-5 flex items-center">
-                                                        <div class="text-base text-slate-500">
+                                                    <div className="mt-5 flex items-center">
+                                                        <div className="text-base text-slate-500">
                                                             Shielded Transfers
                                                         </div>                                                           
                                                     </div>
-                                                    <div class="mt-1 text-2xl font-medium">273,235</div>
+                                                    <div className="mt-1 text-2xl font-medium">273,235</div>
                                                     
                                                     
                                                 </div>
-                                                <div class="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                                                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="layout" class="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
+                                                        <i data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
                                                     </div>
-                                                    <div class="mt-5 flex items-center">                                                          
-                                                            <div class="text-base text-slate-500">
+                                                    <div className="mt-5 flex items-center">                                                          
+                                                            <div className="text-base text-slate-500">
                                                             NAAN Total Supply
                                                         </div>
                                                     </div>
-                                                    <div class="mt-1 text-2xl font-medium">273,235</div>
+                                                    <div className="mt-1 text-2xl font-medium">273,235</div>
                                                     
                                                     
                                                 </div>
-                                                <div class="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                                                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="layout" class="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
+                                                        <i data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
                                                     </div>
-                                                    <div class="mt-5 flex items-center">
-                                                        <div class="text-base text-slate-500">
+                                                    <div className="mt-5 flex items-center">
+                                                        <div className="text-base text-slate-500">
                                                             NAAN Total Stake
                                                         </div>                                                           
                                                     </div>
-                                                    <div class="mt-1 text-2xl font-medium">273,235</div>
+                                                    <div className="mt-1 text-2xl font-medium">273,235</div>
                                                                                                             
                                                 </div>
-                                                <div class="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                                                    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="layout" class="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
+                                                        <i data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
                                                     </div>
-                                                    <div class="mt-5 flex items-center">
-                                                        <div class="text-base text-slate-500">
+                                                    <div className="mt-5 flex items-center">
+                                                        <div className="text-base text-slate-500">
                                                             Validators Active
                                                         </div>                                                           
                                                     </div>
-                                                    <div class="mt-1 text-2xl font-medium">273,235</div>                
+                                                    <div className="mt-1 text-2xl font-medium">273,235</div>                
                                                 </div>
                                             </div>
                                             
