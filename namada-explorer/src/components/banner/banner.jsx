@@ -2,12 +2,10 @@ import "../../Css/pages/landing-page.css";
 import "../../Css/themes/echo.css";
 import "../../Css/vendors/simplebar.css";
 import "../../Css/vendors/tippy.css";
-
+import { Activity, Album, Database, Box, Package, BadgeDollarSign, BadgeCheck, ShieldCheck } from "lucide-react";
 
 
 const Banner = () => {
-
-   
 
     return (
         <>
@@ -19,7 +17,7 @@ const Banner = () => {
                                 <div>
                                     <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
                                         <div className="text-base font-medium group-[.mode--light]:text-white">
-                                            Namada Explorer Dashboard
+                                            Namada Explorer Overview
                                         </div>
                                 
                                     </div>
@@ -28,7 +26,7 @@ const Banner = () => {
                                             <div className="grid w-full grid-cols-4 gap-2">
                                                 <div className="box relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border-0 border-slate-200/60 bg-slate-50 bg-gradient-to-b from-theme-2/90 to-theme-1/[0.85] p-5 before:absolute before:right-0 before:top-0 before:-mr-[62%] before:h-[130%] before:w-full before:rotate-45 before:bg-gradient-to-b before:from-black/[0.15] before:to-transparent before:content-[''] sm:col-span-2 xl:col-span-1">
                                                     <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/10">
-                                                        <i data-tw-merge="" data-lucide="database" className="stroke-[1] h-6 w-6 fill-white/10 text-white"></i>
+                                                        <Database class="stroke-[1] h-6 w-6 fill-white/10 text-white" />
                                                     </div>
                                                     <div className="mt-5 flex items-center">
                                                         <div className="text-base text-white/70">
@@ -42,8 +40,8 @@ const Banner = () => {
                                                     
                                                 </div>
                                                 <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">        
+                                                        <Activity className="stroke-[1] h-6 w-6 fill-primary/10 text-primary" />
                                                     </div>
                                                     <div className="mt-5 flex items-center">
                                                         <div className="text-base text-slate-500">
@@ -55,7 +53,7 @@ const Banner = () => {
 
                                                 <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
                                                     <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="app-window" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                        <Album  className="stroke-[1] h-6 w-6 fill-primary/10 text-primary" /> 
                                                     </div>
                                                     <div className="mt-5 flex items-center">
                                                         <div className="text-base text-slate-500">
@@ -69,7 +67,7 @@ const Banner = () => {
                                                 </div>
                                                 <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
                                                     <div className="flex h-12 w-12 items-center justify-center rounded-full border border-info/10 bg-info/10">
-                                                        <i data-tw-merge="" data-lucide="box" className="stroke-[1] h-6 w-6 fill-info/10 text-info"></i>
+                                                        <Box className="stroke-[1] h-6 w-6 fill-primary/10 text-primary" />
                                                     </div>
                                                     <div className="mt-5 flex items-center">
                                                             <div className="text-base text-slate-500">
@@ -83,7 +81,7 @@ const Banner = () => {
                                                 </div>
                                                 <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
                                                     <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                        <Package className="stroke-[1] h-6 w-6 fill-primary/10 text-primary" />
                                                     </div>
                                                     <div className="mt-5 flex items-center">
                                                         <div className="text-base text-slate-500">
@@ -96,7 +94,7 @@ const Banner = () => {
                                                 </div>
                                                 <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
                                                     <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                        <BadgeDollarSign className="stroke-[1] h-6 w-6 fill-primary/10 text-primary" />
                                                     </div>
                                                     <div className="mt-5 flex items-center">                                                          
                                                             <div className="text-base text-slate-500">
@@ -109,7 +107,7 @@ const Banner = () => {
                                                 </div>
                                                 <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
                                                     <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                        <BadgeCheck data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary" />
                                                     </div>
                                                     <div className="mt-5 flex items-center">
                                                         <div className="text-base text-slate-500">
@@ -121,7 +119,7 @@ const Banner = () => {
                                                 </div>
                                                 <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
                                                     <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                                                        <i data-tw-merge="" data-lucide="layout" className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"></i>
+                                                        <ShieldCheck className="stroke-[1] h-6 w-6 fill-primary/10 text-primary" />
                                                     </div>
                                                     <div className="mt-5 flex items-center">
                                                         <div className="text-base text-slate-500">

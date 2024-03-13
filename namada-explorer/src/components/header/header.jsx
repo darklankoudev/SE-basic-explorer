@@ -4,6 +4,7 @@ import "../../Css/themes/echo.css";
 import "../../Css/vendors/simplebar.css";
 import "../../Css/vendors/tippy.css";
 import { AlignJustify, Search } from "lucide-react";
+import logoNamada from "../../assets/logoNamada.svg"
 
 const Header = ({readOnly}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,7 +44,7 @@ const Header = ({readOnly}) => {
                   data-lucide="align-justify"
                   className="stroke-[1] h-[18px] w-[18px]"
                 ></i> */}
-                 <AlignJustify size={24} />
+                 <AlignJustify className="stroke-[1] h-[18px] w-[18px]" />
               </a>
               <a
                 className="p-2 text-white rounded-full hover:bg-white/5"
@@ -56,7 +57,7 @@ const Header = ({readOnly}) => {
                   data-lucide="search"
                   className="stroke-[1] h-[18px] w-[18px]"
                 ></i> */}
-                <Search size={24} />
+                <Search  className="stroke-[1] h-[18px] w-[18px]"/>
               </a>
             </div>
              
@@ -80,11 +81,12 @@ const Header = ({readOnly}) => {
               data-tw-target="#quick-search"
             >
               <div className="flex w-[350px] cursor-pointer items-center rounded-[0.5rem] border border-transparent bg-white/[0.12] px-3.5 py-2 text-white/60 transition-colors duration-300 hover:bg-white/[0.15] hover:duration-100">
-                <i
+                {/* <i
                   data-tw-merge=""
                   data-lucide="search"
                   className="stroke-[1] h-[18px] w-[18px]"
-                ></i>
+                ></i> */}
+                <Search  className="stroke-[1] h-[18px] w-[18px]"/>
                 <div className="ml-2.5 mr-auto">Quick search ...</div>
               </div>
             </div>
@@ -150,11 +152,11 @@ const Header = ({readOnly}) => {
                 <button
                   data-tw-toggle="dropdown"
                   aria-expanded="false"
-                  className="cursor-pointer image-fit h-[36px] w-[36px] overflow-hidden rounded-full border-[3px] border-white/[0.15]"
+                  className="cursor-pointer image-fit h-[40px] w-[40px] overflow-hidden rounded-full border-[3px] border-white/[0.15]"
                 >
                   <img
-                    src="dist/images/users/user5-50x50.jpg"
-                    alt="Tailwise - Admin Dashboard Template"
+                    src={logoNamada}
+                    alt="Namada Explorer"
                   />
                 </button>
                 <div
