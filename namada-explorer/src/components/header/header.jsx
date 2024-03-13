@@ -3,6 +3,7 @@ import "../../Css/pages/landing-page.css";
 import "../../Css/themes/echo.css";
 import "../../Css/vendors/simplebar.css";
 import "../../Css/vendors/tippy.css";
+import { AlignJustify, Search } from "lucide-react";
 
 const Header = ({readOnly}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,11 +38,12 @@ const Header = ({readOnly}) => {
                 className="p-2 text-white rounded-full open-mobile-menu hover:bg-white/5"
                 href="#" onClick={handleOpenMenu}
               >
-                <i
+                {/* <i
                   data-tw-merge=""
                   data-lucide="align-justify"
                   className="stroke-[1] h-[18px] w-[18px]"
-                ></i>
+                ></i> */}
+                 <AlignJustify size={24} />
               </a>
               <a
                 className="p-2 text-white rounded-full hover:bg-white/5"
@@ -49,11 +51,12 @@ const Header = ({readOnly}) => {
                 data-tw-target="#quick-search"
                 href="#" onClick={HandleClick}
               >
-                <i
+                {/* <i
                   data-tw-merge=""
                   data-lucide="search"
                   className="stroke-[1] h-[18px] w-[18px]"
-                ></i>
+                ></i> */}
+                <Search size={24} />
               </a>
             </div>
              
