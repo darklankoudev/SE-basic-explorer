@@ -115,8 +115,9 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                                 <div className="ml-3.5 font-bold text-xl transition-opacity group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:opacity-0">
-                                  ThanhPHM
-                                </div> 
+                                    Thanhphm
+                                </div>
+
                             </a>
                             <a className="toggle-compact-menu ml-auto hidden h-[20px] w-[20px] items-center justify-center rounded-full border border-slate-600/40 transition-[opacity,transform] hover:bg-slate-600/5 group-[.side-menu--collapsed]:xl:rotate-180 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:opacity-0 3xl:flex" href="#" onClick={handleToggleCompactMenu}>
                                 <ArrowLeft class="h-3.5 w-3.5 stroke-[1.3]" />

@@ -3,7 +3,7 @@ import "../../Css/pages/landing-page.css";
 import "../../Css/themes/echo.css";
 import "../../Css/vendors/simplebar.css";
 import "../../Css/vendors/tippy.css";
-import { AlignJustify, Search } from "lucide-react";
+import { AlignJustify, Expand, LayoutGrid, Search, ToggleLeft } from "lucide-react";
 import logoNamada from "../../assets/logoNamada.svg"
 
 const Header = ({readOnly}) => {
@@ -32,19 +32,13 @@ const Header = ({readOnly}) => {
       <div className="fixed inset-x-0 top-0 mt-3.5 h-[65px] transition-[margin] duration-100 xl:ml-[275px] group-[.side-menu--collapsed]:xl:ml-[90px]">
         <div className="top-bar absolute left-0 xl:left-3.5 right-0 h-full mx-5 group before:content-[''] before:absolute before:top-0 before:inset-x-0 before:-mt-[15px] before:h-[20px] before:backdrop-blur">
           <div className="box group-[.top-bar--active]:box container flex h-full w-full items-center border-transparent bg-transparent shadow-none transition-[padding,background-color,border-color] duration-300 ease-in-out group-[.top-bar--active]:border-transparent group-[.top-bar--active]:bg-transparent group-[.top-bar--active]:bg-gradient-to-r group-[.top-bar--active]:from-theme-1 group-[.top-bar--active]:to-theme-2 group-[.top-bar--active]:px-5">
-            {/* <!-- Sự kiện sidebar và search  --> */}
 
             <div className="flex items-center gap-1 xl:hidden">
               <a
                 className="p-2 text-white rounded-full open-mobile-menu hover:bg-white/5"
                 href="#" onClick={handleOpenMenu}
               >
-                {/* <i
-                  data-tw-merge=""
-                  data-lucide="align-justify"
-                  className="stroke-[1] h-[18px] w-[18px]"
-                ></i> */}
-                 <AlignJustify className="stroke-[1] h-[18px] w-[18px]" />
+                <AlignJustify className="stroke-[1] h-[18px] w-[18px]" />
               </a>
               <a
                 className="p-2 text-white rounded-full hover:bg-white/5"
@@ -52,18 +46,10 @@ const Header = ({readOnly}) => {
                 data-tw-target="#quick-search"
                 href="#" onClick={HandleClick}
               >
-                {/* <i
-                  data-tw-merge=""
-                  data-lucide="search"
-                  className="stroke-[1] h-[18px] w-[18px]"
-                ></i> */}
                 <Search  className="stroke-[1] h-[18px] w-[18px]"/>
               </a>
             </div>
              
-            {/* <!-- kết thúc sự kiện sidebar và search --> */}
-
-            {/* <!-- BEGIN: Breadcrumb --> */}
             <nav aria-label="breadcrumb" className="flex flex-1 hidden xl:block">
               <ol className="flex items-center text-theme-1 dark:text-slate-300 text-white/90">
                 <li className="">
@@ -81,11 +67,6 @@ const Header = ({readOnly}) => {
               data-tw-target="#quick-search"
             >
               <div className="flex w-[350px] cursor-pointer items-center rounded-[0.5rem] border border-transparent bg-white/[0.12] px-3.5 py-2 text-white/60 transition-colors duration-300 hover:bg-white/[0.15] hover:duration-100">
-                {/* <i
-                  data-tw-merge=""
-                  data-lucide="search"
-                  className="stroke-[1] h-[18px] w-[18px]"
-                ></i> */}
                 <Search  className="stroke-[1] h-[18px] w-[18px]"/>
                 <div className="ml-2.5 mr-auto">Quick search ...</div>
               </div>
@@ -99,11 +80,7 @@ const Header = ({readOnly}) => {
               <div className="relative mx-auto my-2 w-[95%] scale-95 transition-transform group-[.show]:scale-100 sm:mt-40 sm:w-[600px] lg:w-[700px]">
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex w-12 items-center justify-center">
-                    <i
-                      data-tw-merge=""
-                      data-lucide="search"
-                      className="stroke-[1] w-5 h-5 -mr-1.5 text-slate-500"
-                    ></i>
+                    <Search className="stroke-[1] w-5 h-5 -mr-1.5 text-slate-500"/>
                   </div>
                   <input
                     data-tw-merge=""
@@ -122,26 +99,10 @@ const Header = ({readOnly}) => {
             <div className="flex items-center flex-1">
               <div className="flex items-center gap-1 ml-auto">
                 <a
-                  className="p-2 text-white rounded-full hover:bg-white/5"
-                  data-tw-toggle="modal"
-                  data-tw-target="#activities-panel"
+                  className="p-1 text-white rounded-full request-full-screen hover:bg-white/5"
                   href="#" onClick={HandleClick}
                 >
-                  <i
-                    data-tw-merge=""
-                    data-lucide="layout-grid"
-                    className="stroke-[1] h-[18px] w-[18px]"
-                  ></i>
-                </a>
-                <a
-                  className="p-2 text-white rounded-full request-full-screen hover:bg-white/5"
-                  href="#" onClick={HandleClick}
-                >
-                  <i
-                    data-tw-merge=""
-                    data-lucide="expand"
-                    className="stroke-[1] h-[18px] w-[18px]"
-                  ></i>
+                  <Expand className="stroke-[1] h-[18px] w-[18px]" />
                 </a>
               </div>
               <div
@@ -179,11 +140,7 @@ const Header = ({readOnly}) => {
                       data-tw-target="#switch-account"
                       className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"
                     >
-                      <i
-                        data-tw-merge=""
-                        data-lucide="toggle-left"
-                        className="stroke-[1] w-4 h-4 mr-2"
-                      ></i>
+                      <ToggleLeft className="stroke-[1] w-4 h-4 mr-2" />
                       Choose Chain
                     </a>
                   </div>
