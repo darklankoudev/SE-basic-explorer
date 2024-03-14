@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../../Css/pages/landing-page.css";
 import "../../Css/themes/echo.css";
 import "../../Css/vendors/simplebar.css";
@@ -26,6 +26,7 @@ const Dashboard = () => {
         sideMenu.classList.remove('side-menu--mobile-menu-open');
         sideMenu.classList.remove('close-mobile-menu--mobile-menu-open');
     };
+
       
 
     return (
@@ -56,7 +57,7 @@ const Dashboard = () => {
 
                             </a>
                             {/* classList */}
-                            <div className="toggle-compact-menu ml-auto hidden h-[20px] w-[20px] items-center justify-center rounded-full border border-slate-600/40 transition-[opacity,transform] hover:bg-slate-600/5 group-[.side-menu--collapsed]:xl:rotate-180 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:opacity-0 3xl:flex">
+                            <div className="toggle-compact-menu ml-auto hidden h-[20px] w-[20px] items-center justify-center rounded-full border border-slate-600/40 transition-[opacity,transform] hover:bg-slate-600/5 group-[.side-menu--collapsed]:xl:rotate-180 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:opacity-0 3xl:flex" >
                                 <ArrowLeft class="h-3.5 w-3.5 stroke-[1.3]" />
                             </div>
                         </div>

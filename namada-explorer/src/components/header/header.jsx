@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../Css/pages/landing-page.css";
 import "../../Css/themes/echo.css";
 import "../../Css/vendors/simplebar.css";
@@ -8,6 +8,37 @@ import logoNamada from "../../assets/logoNamada.svg"
 
 const Header = ({readOnly}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const backgroundMode = () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const backgroundElement = document.querySelector(".background");
+    const topBarElement = document.querySelector(".top-bar");
+    const contentElement = document.querySelector(".content.mode");
+
+    if (scrollTop > 0) {
+      backgroundElement.classList.add("background--hidden");
+      topBarElement.classList.add("top-bar--active");
+      contentElement.classList.remove("mode--light");
+    } else {
+      backgroundElement.classList.remove("background--hidden");
+      topBarElement.classList.remove("top-bar--active");
+      contentElement.classList.add("mode--light");
+    }
+  };
+
+  useEffect(() => {
+    backgroundMode();
+
+    const handleScroll = () => {
+      backgroundMode();
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleOpenMenu = () => {
   setIsMenuOpen(true);
