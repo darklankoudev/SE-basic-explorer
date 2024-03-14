@@ -4,7 +4,16 @@ import { API_BASE_URL_SUPPORT } from "../../constants/constants";
 
 const TableLatestVal = () => {
 
-  const [top10Val, setTop10Val] = useState("");
+  const [top10Val, setTop10Val] = useState([]);
+
+  const votingPowerFormatted = (number) => {
+    return (number / 1000000).toLocaleString({ maximumFractionDigits: 2 });
+  };
+  
+  const votingPercentageFormatted = (number) => {
+    return number.toFixed(2) + '%';
+  };
+
   useEffect(() => {
     const fetchData = async () => {
 
@@ -23,7 +32,7 @@ const TableLatestVal = () => {
       }
     };
 
-    const intervalId = setInterval(fetchData, 1800);
+    const intervalId = setInterval(fetchData, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -83,6 +92,12 @@ const TableLatestVal = () => {
               >
                 Percentage
               </th>
+              <th
+                data-tw-merge
+                className="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 border-l border-r border-t whitespace-nowrap"
+              >
+                Uptime
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -93,8 +108,9 @@ const TableLatestVal = () => {
                 <td data-tw-merge className="px-5 py-3 border-b dark:border-darkmode-300 border-l border-r border-t">{validator.address}</td>
                 <td data-tw-merge className="px-5 py-3 border-b dark:border-darkmode-300 border-l border-r border-t">{validator.operator_address}</td>
                 <td data-tw-merge className="px-5 py-3 border-b dark:border-darkmode-300 border-l border-r border-t">{validator.pub_key.type}</td>
-                <td data-tw-merge className="px-5 py-3 border-b dark:border-darkmode-300 border-l border-r border-t">{validator.voting_power}</td>
-                <td data-tw-merge className="px-5 py-3 border-b dark:border-darkmode-300 border-l border-r border-t">{validator.voting_percentage}</td>
+                <td data-tw-merge className="px-5 py-3 border-b dark:border-darkmode-300 border-l border-r border-t">{votingPowerFormatted(validator.voting_power)}</td>
+                <td data-tw-merge className="px-5 py-3 border-b dark:border-darkmode-300 border-l border-r border-t">{votingPercentageFormatted(validator.voting_percentage)}</td>
+                <td data-tw-merge className="px-5 py-3 border-b dark:border-darkmode-300 border-l border-r border-t">100%</td>
               </tr>
             ))}
           </tbody>

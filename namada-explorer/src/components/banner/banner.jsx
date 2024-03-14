@@ -53,13 +53,13 @@ const Banner = () => {
         const validatorsList = res.data.currentValidatorsList;
         const totalValidator = validatorsList.length;
         setInfoVal(totalValidator);
-        
+
       } catch (e) {
         console.log(e);
       }
     };
 
-    const intervalId = setInterval(fetchData, 1800);
+    const intervalId = setInterval(fetchData, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
