@@ -7,6 +7,10 @@ import Banner from "../banner/banner";
 import Header from "../header/header";
 import { X, GaugeCircle, ArrowLeft, ActivitySquare, BookMarked, ShieldHalf, Cable, TabletSmartphone} from "lucide-react"
 import IndexBlockValidator from "../latest";
+import { Routes, Route, Link } from "react-router-dom";
+import Transactions from "../../pages/transactions/transactions";
+import Blocks from "../../pages/blocks/blocks";
+import Validator from "../../pages/validators/validators";
 
 const Dashboard = () => {
     const HandleClick = (e) => {
@@ -16,80 +20,12 @@ const Dashboard = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const handleOpenMenu = () => {
-        setIsMenuOpen(true);
-        const sideMenu = document.querySelector('.side-menu');
-        sideMenu.classList.add('side-menu--mobile-menu-open');
-        sideMenu.classList.add('close-mobile-menu--mobile-menu-open');
-        };
-
     const handleCloseMenu = () => {
         setIsMenuOpen(false);
         const sideMenu = document.querySelector('.side-menu');
         sideMenu.classList.remove('side-menu--mobile-menu-open');
         sideMenu.classList.remove('close-mobile-menu--mobile-menu-open');
     };
-    
-    
-
-    useEffect(() => {
-        const compactMenu = localStorage.getItem("compactMenu");
-        if (compactMenu === null || compactMenu === "true") {
-            localStorage.setItem("compactMenu", "true");
-            document.querySelector(".side-menu").classList.add("side-menu--collapsed");
-            document.querySelector(".content").classList.add("content--compact");
-        } else {
-            document.querySelector(".side-menu").classList.remove("side-menu--collapsed");
-            document.querySelector(".content").classList.remove("content--compact");
-        }
-    }, []);
-
-    const [compactMenu, setCompactMenu] = useState(localStorage.getItem("compactMenu") === "true");
-    const [isHovering, setIsHovering] = useState(false);
-
-    const handleToggleCompactMenu = () => {
-        setCompactMenu(!compactMenu);
-        localStorage.setItem("compactMenu", (!compactMenu).toString());
-    };
-    useEffect(() => {
-        const handleMouseEnter = () => {
-            setIsHovering(true);
-        };
-
-        const handleMouseLeave = () => {
-            setIsHovering(false);
-        };
-
-        document.querySelectorAll(".side-menu__content").forEach((element) => {
-            element.addEventListener("mouseover", handleMouseEnter);
-            element.addEventListener("mouseleave", handleMouseLeave);
-        });
-
-        return () => {
-            document.querySelectorAll(".side-menu__content").forEach((element) => {
-                element.removeEventListener("mouseover", handleMouseEnter);
-                element.removeEventListener("mouseleave", handleMouseLeave);
-            });
-        };
-    }, [compactMenu]);
-
-    useEffect(() => {
-        if (isHovering) {
-            document.querySelector(".side-menu").classList.add("side-menu--on-hover");
-        } else {
-            document.querySelector(".side-menu").classList.remove("side-menu--on-hover");
-        }
-    }, [isHovering]);
-
-    useEffect(() => {
-        if (compactMenu) {
-            document.querySelector(".side-menu").classList.add("side-menu--collapsed");
-            document.querySelector(".content").classList.add("content--compact");
-        } else {
-            document.querySelector(".side-menu").classList.remove("side-menu--collapsed");
-            document.querySelector(".content").classList.remove("content--compact");
-        }
-    }, [compactMenu]);
       
 
     return (
@@ -119,62 +55,63 @@ const Dashboard = () => {
                                 </div>
 
                             </a>
-                            <a className="toggle-compact-menu ml-auto hidden h-[20px] w-[20px] items-center justify-center rounded-full border border-slate-600/40 transition-[opacity,transform] hover:bg-slate-600/5 group-[.side-menu--collapsed]:xl:rotate-180 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:opacity-0 3xl:flex" href="#" onClick={handleToggleCompactMenu}>
+                            {/* classList */}
+                            <div className="toggle-compact-menu ml-auto hidden h-[20px] w-[20px] items-center justify-center rounded-full border border-slate-600/40 transition-[opacity,transform] hover:bg-slate-600/5 group-[.side-menu--collapsed]:xl:rotate-180 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:opacity-0 3xl:flex">
                                 <ArrowLeft class="h-3.5 w-3.5 stroke-[1.3]" />
-                            </a>
+                            </div>
                         </div>
-                        <div className="scrollable-ref w-full h-full z-20 px-5 overflow-y-auto overflow-x-hidden pb-3 [-webkit-mask-image:-webkit-linear-gradient(top,rgba(0,0,0,0),black_30px)] [&:-webkit-scrollbar]:w-0 [&:-webkit-scrollbar]:bg-transparent [&_.simplebar-content]:p-0 [&_.simplebar-track.simplebar-vertical]:w-[10px] [&_.simplebar-track.simplebar-vertical]:mr-0.5 [&_.simplebar-track.simplebar-vertical_.simplebar-scrollbar]:before:bg-slate-400/30">
+                        <div className="scrollable-ref w-full h-full z-20 px-5 overflow-y-auto overflow-x-hidden pb-3 [-webkit-mask-image:-webkit-linear-gradient(top,rgba(0,0,0,0),black_30px)] [&:-webkit-scrollbar]:w-0 [&:-webkit-scrollbar]:bg-transparent [&_.simplebar-content]:p-0 [&_.simplebar-track.simplebar-vertical]:w-[10px] [&_.simplebar-track.simplebar-vertical]:mr-0.5 [&_.simplebar-track.simplebar-vertical_.simplebar-scrollbar]:before:bg-slate-400/30" >
                             <ul className="scrollable">
                                 
                                 <li className="side-menu__divider">
                                     DASHBOARDS
                                 </li>
                                 <li>
-                                    <a href="#" onClick={handleCloseMenu} className="side-menu__link side-menu__link--active">
+                                    <Link to="/" className="side-menu__link side-menu__link--active">
                                         <GaugeCircle className="stroke-[1] w-5 h-5 side-menu__link__icon"/>
                                         <div className="side-menu__link__title">Overview</div>
-                                    </a>
+                                    </Link>
                                  
                                 </li>
                                 <li>
-                                    <a href="#" onClick={handleCloseMenu} className="side-menu__link ">
+                                    <Link to="transactions" className="side-menu__link ">
                                         <ActivitySquare size={20} className="stroke-[1] w-5 h-5 side-menu__link__icon"/>
                                         <div className="side-menu__link__title">Transactions</div>
-                                    </a>
+                                    </Link>
                              
                                 </li>
                                 <li>
-                                    <a href="" className="side-menu__link ">
+                                    <Link to="blocks" className="side-menu__link ">
                                         <BookMarked size={20} className="stroke-[1] w-5 h-5 side-menu__link__icon"/> 
                                         <div className="side-menu__link__title">Blocks</div>
-                                    </a>
+                                    </Link>
                                 
                                 </li>
                                 <li>
-                                    <a href="#" onClick={handleCloseMenu} className="side-menu__link ">
+                                    <Link to="validators" className="side-menu__link ">
                                         <ShieldHalf size={20} className="stroke-[1] w-5 h-5 side-menu__link__icon" />
                                         <div className="side-menu__link__title">Validators </div>
-                                    </a>
+                                    </Link>
                                    
                                 </li>
                                 <li className="side-menu__divider">
                                     SERVICES
                                 </li>
                                 <li>
-                                    <a href="" className="side-menu__link ">
+                                    <Link to="provider" className="side-menu__link ">
                                         <Cable size={20} className="stroke-[1] w-5 h-5 side-menu__link__icon"/>
                                         <div className="side-menu__link__title">Provider</div>
-                                    </a>
+                                    </Link>
                                    
                                 </li>                    
                                 <li className="side-menu__divider">
                                     INFO
                                 </li>
                                 <li>
-                                    <a href="#" onClick={HandleClick} className="side-menu__link ">
+                                    <Link to="contact" className="side-menu__link ">
                                         <TabletSmartphone size={20} className="stroke-[1] w-5 h-5 side-menu__link__icon"/>
-                                        <div className="side-menu__link__title">Contacts</div>
-                                    </a>
+                                        <div className="side-menu__link__title">Contact</div>
+                                    </Link>
                                 </li>
 
                             </ul>
@@ -186,8 +123,16 @@ const Dashboard = () => {
 
                 </div>
 
-             <Banner />
-        <IndexBlockValidator /> 
+                <Routes>
+                    <Route path='/' element={<Banner />} />
+                    <Route path='transactions' element={<Transactions />} />
+                    <Route path='blocks' element={<Blocks />} />
+                    <Route path='validators'  element={<Validator />} />
+                </Routes>
+                
+
+             {/* <Banner /> */}
+
         </div>
 
         </>

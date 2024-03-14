@@ -3,6 +3,7 @@ import "../../Css/themes/echo.css";
 import "../../Css/vendors/simplebar.css";
 import "../../Css/vendors/tippy.css";
 import { Activity, Album, Database, Box, Package, BadgeDollarSign, BadgeCheck, ShieldCheck } from "lucide-react";
+import IndexBlockValidator from "../latest";
 
 
 const Banner = () => {
@@ -140,6 +141,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
+            <IndexBlockValidator />
         </>
     )
 }

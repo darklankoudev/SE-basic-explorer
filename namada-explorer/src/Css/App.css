@@ -6654,6 +6654,10 @@ select {
   border-top-left-radius: 0.375rem;
   border-top-right-radius: 0.375rem;
 }
+.rounded-t-xl {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
 .rounded-bl-xl {
   border-bottom-left-radius: 0.75rem;
 }

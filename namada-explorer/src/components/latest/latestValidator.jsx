@@ -1,4 +1,4 @@
-import Table from "../table/table";
+import TableLatestVal from "../table/tableLatestVal";
 
 const LatestValidator = () => {
   return (
@@ -9,7 +9,7 @@ const LatestValidator = () => {
             <div className="text-base font-medium">Latest Transactions</div>
           </div>
           <div className="box box--stacked mt-3.5 p-5">
-            <Table />
+            <TableLatestVal />
           </div>
         </div>
       </div>

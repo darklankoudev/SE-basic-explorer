@@ -1,4 +1,4 @@
-import TableTXH from "../table/tableTXH";
+import TableLatestTXH from "../table/tableLatestTXH";
 
 const LatestTransaction = () => {
   return (
@@ -11,7 +11,7 @@ const LatestTransaction = () => {
             </div>
           </div>
           <div class="box box--stacked mt-3.5 p-5">
-            <TableTXH />
+            <TableLatestTXH />
           </div>
         </div>
       </div>

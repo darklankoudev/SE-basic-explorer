@@ -15,12 +15,6 @@ const Header = ({readOnly}) => {
   sideMenu.classList.add('side-menu--mobile-menu-open');
   sideMenu.classList.add('close-mobile-menu--mobile-menu-open');
   };
-  const handleCloseMenu = () => {
-  setIsMenuOpen(false);
-  const sideMenu = document.querySelector('.side-menu');
-  sideMenu.classList.remove('side-menu--mobile-menu-open');
-  sideMenu.classList.remove('close-mobile-menu--mobile-menu-open');
-  };
 
   const HandleClick = (e) => {
     e.preventDefault();

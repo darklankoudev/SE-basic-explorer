@@ -1,7 +1,7 @@
-const Table = () => {
+const TableLatestTXH = () => {
   return (
     <>
-      <div className="overflow-x-auto overflow-y-auto">
+       <div className="overflow-x-auto overflow-y-auto">
         <table data-tw-merge className="w-full text-left ">
           <thead data-tw-merge className="bg-slate-200/60 dark:bg-slate-200">
             <tr
@@ -129,4 +129,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default TableLatestTXH;
