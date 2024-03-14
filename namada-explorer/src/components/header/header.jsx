@@ -122,18 +122,10 @@ const Header = ({readOnly}) => {
               </div>
             </div>
             <div className="flex items-center flex-1">
-              <div className="flex items-center gap-1 ml-auto">
-                <a
-                  className="p-1 text-white rounded-full request-full-screen hover:bg-white/5"
-                  href="#" onClick={HandleClick}
-                >
-                  <Expand className="stroke-[1] h-[18px] w-[18px]" />
-                </a>
-              </div>
               <div
                 data-tw-merge=""
                 data-tw-placement="bottom-end"
-                className="dropdown relative ml-5"
+                className="dropdown relative ml-auto"
               >
                 <button
                   data-tw-toggle="dropdown"

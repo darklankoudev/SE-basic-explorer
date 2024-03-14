@@ -3,7 +3,7 @@ const TableLatestBlock = () => {
       <>
          <div className="overflow-x-auto overflow-y-auto">
           <table data-tw-merge className="w-full text-left ">
-            <thead data-tw-merge className="bg-slate-200/60 dark:bg-slate-200">
+            <thead data-tw-merge className="text-white overflow-hidden bg-gradient-to-b from-theme-2/90 to-theme-1/[0.85] p-5">
               <tr
                 data-tw-merge
                 className="[&amp;:hover_td]:bg-slate-100 [&amp;:hover_td]:dark:bg-darkmode-300 [&amp;:hover_td]:dark:bg-opacity-50"

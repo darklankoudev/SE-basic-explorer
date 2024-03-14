@@ -4578,9 +4578,9 @@ select {
   outline: 1px auto -webkit-focus-ring-color;
 }
 :root {
-  --color-theme-1: 3 4 94;
-  --color-theme-2: 12 74 110;
-  --color-primary: 3 4 94;
+  --color-theme-1: 2 41 47;
+  --color-theme-2: 118 117 34;
+  --color-primary: 2 41 47;
   --color-secondary: 226 232 240;
   --color-success: 13 148 136;
   --color-info: 8 145 178;
@@ -4591,7 +4591,7 @@ select {
   --color-dark: 30 41 59;
 }
 .dark {
-  --color-primary: 29 78 216;
+  --color-primary: 7 89 133;
   --color-darkmode-50: 87 103 132;
   --color-darkmode-100: 74 90 121;
   --color-darkmode-200: 65 81 114;
@@ -6404,6 +6404,9 @@ select {
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
 .grid-cols-9 {
   grid-template-columns: repeat(9, minmax(0, 1fr));
 }
@@ -6661,8 +6664,17 @@ select {
 .rounded-bl-xl {
   border-bottom-left-radius: 0.75rem;
 }
+.rounded-tl-lg {
+  border-top-left-radius: 0.6rem;
+}
+.rounded-tr-lg {
+  border-top-right-radius: 0.6rem;
+}
 .rounded-tl-xl {
   border-top-left-radius: 0.75rem;
+}
+.rounded-tr-xl {
+  border-top-right-radius: 0.75rem;
 }
 .border {
   border-width: 1px;
