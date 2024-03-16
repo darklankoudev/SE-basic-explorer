@@ -4,7 +4,7 @@ import { API_BASE_URL_SUPPORT } from "../../constants/constants";
 
 const TableLatestVal = () => {
 
-  const [top10Val, setTop10Val] = useState("");
+  const [top10Val, setTop10Val] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
 

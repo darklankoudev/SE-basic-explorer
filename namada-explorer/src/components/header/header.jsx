@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../../Css/pages/landing-page.css";
 import "../../Css/themes/echo.css";
 import "../../Css/vendors/simplebar.css";
@@ -6,8 +6,11 @@ import "../../Css/vendors/tippy.css";
 import { AlignJustify, Expand, LayoutGrid, Search, ToggleLeft } from "lucide-react";
 import logoNamada from "../../assets/logoNamada.svg"
 
-const Header = ({readOnly}) => {
+const Header = ({modal,readOnly}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showSearchModal, setShowSearchModal] = useState(false); 
+  const searchModalRef = useRef(null);
+
 
   const backgroundMode = () => {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -52,6 +55,77 @@ const Header = ({readOnly}) => {
     console.log('Button clicked!');
    }
    
+   
+   const handleOpenSearchModal = () => {
+    searchModalRef.current.classList.add('show');
+    setShowSearchModal(true);
+  };
+
+  const handleCloseSearchModal = () => {
+    searchModalRef.current.classList.remove('show');
+    setShowSearchModal(false);
+  };
+
+  const [isShown, setIsShown] = useState(false);
+  const [state, setState] = useState(isShown ? "enter" : "leave");
+  const elRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setState(state => (isShown ? "enter" : "leave"));
+    });
+
+    if (elRef.current) {
+      observer.observe(elRef.current, { attributes: true });
+    }
+
+    return () => observer.disconnect();
+  }, [isShown]);
+
+  useEffect(() => {
+    const el = elRef.current;
+
+    if (!el) return;
+
+    if (isShown && state === "leave") {
+      setState("enter");
+      el.style.display = "block";
+
+      // Enter
+      el.classList.add(el.dataset.enterFrom);
+      setTimeout(() => {
+        el.classList.add(el.dataset.enter);
+        el.classList.add(el.dataset.enterTo);
+        el.classList.remove(el.dataset.enterFrom);
+
+        setTimeout(() => {
+          el.classList.remove(el.dataset.enter);
+        }, parseFloat(window.getComputedStyle(el).transitionDuration) * 1000);
+      });
+    } else if (!isShown && state === "enter") {
+      setState("leave");
+      
+      // Leave
+      el.classList.add(el.dataset.leaveFrom);
+      setTimeout(() => {
+        el.classList.add(el.dataset.leave);
+        el.classList.add(el.dataset.leaveTo);
+        el.classList.remove(el.dataset.leaveFrom);
+
+        setTimeout(() => {
+          el.classList.remove(el.dataset.leave);
+          el.className = (el.className !== undefined ? el.className : "")
+            .split(" ")
+            .filter(value => !value.startsWith("mt-"))
+            .join(" ");
+          setTimeout(() => {
+            el.style.display = "none";
+          }, 100);
+        }, parseFloat(window.getComputedStyle(el).transitionDuration) * 1000);
+      });
+    }
+  }, [isShown, state]);
+
   return (
     <>
       <div className="fixed inset-x-0 top-0 mt-3.5 h-[65px] transition-[margin] duration-100 xl:ml-[275px] group-[.side-menu--collapsed]:xl:ml-[90px]">
@@ -69,7 +143,7 @@ const Header = ({readOnly}) => {
                 className="p-2 text-white rounded-full hover:bg-white/5"
                 data-tw-toggle="modal"
                 data-tw-target="#quick-search"
-                href="#" onClick={HandleClick}
+                href="#" onClick={handleOpenSearchModal}
               >
                 <Search  className="stroke-[1] h-[18px] w-[18px]"/>
               </a>
@@ -90,18 +164,22 @@ const Header = ({readOnly}) => {
               className="relative justify-center flex-1 hidden xl:flex"
               data-tw-toggle="modal"
               data-tw-target="#quick-search"
+              onClick={handleOpenSearchModal}
             >
               <div className="flex w-[350px] cursor-pointer items-center rounded-[0.5rem] border border-transparent bg-white/[0.12] px-3.5 py-2 text-white/60 transition-colors duration-300 hover:bg-white/[0.15] hover:duration-100">
                 <Search  className="stroke-[1] h-[18px] w-[18px]"/>
                 <div className="ml-2.5 mr-auto">Quick search ...</div>
               </div>
             </div>
+          
             <div
               id="quick-search"
               aria-hidden="true"
               tabIndex="-1"
+              ref={searchModalRef}
               className="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed left-0 top-0 overflow-y-hidden z-[60] [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.1s]"
             >
+            
               <div className="relative mx-auto my-2 w-[95%] scale-95 transition-transform group-[.show]:scale-100 sm:mt-40 sm:w-[600px] lg:w-[700px]">
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex w-12 items-center justify-center">
@@ -115,17 +193,26 @@ const Header = ({readOnly}) => {
                   />
                   <div className="absolute inset-y-0 right-0 flex w-14 items-center">
                     <div className="mr-auto rounded-[0.4rem] border bg-slate-100 px-2 py-1 text-xs text-slate-500/80">
-                      ESC
+                      <button
+                       id="quick-search"
+                       aria-hidden="true"
+                       tabIndex="-1"
+                      ref={searchModalRef}
+                      onClick={handleCloseSearchModal}
+                      > ESC </button>
+                     
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+              
             <div className="flex items-center flex-1">
               <div
                 data-tw-merge=""
                 data-tw-placement="bottom-end"
                 className="dropdown relative ml-auto"
+                onClick={() => setIsShown(!isShown)}
               >
                 <button
                   data-tw-toggle="dropdown"
@@ -138,14 +225,9 @@ const Header = ({readOnly}) => {
                   />
                 </button>
                 <div
-                  data-transition=""
+                  ref={elRef}
+                  data-transition="true"
                   data-selector=".show"
-                  data-enter="transition-all ease-linear duration-150"
-                  data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1"
-                  data-enter-to="!mt-1 visible opacity-100 translate-y-0"
-                  data-leave="transition-all ease-linear duration-150"
-                  data-leave-from="!mt-1 visible opacity-100 translate-y-0"
-                  data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1"
                   className="dropdown-menu absolute z-[9999] hidden"
                 >
                   <div
@@ -160,11 +242,13 @@ const Header = ({readOnly}) => {
                       <ToggleLeft className="stroke-[1] w-4 h-4 mr-2" />
                       Choose Chain
                     </a>
+                   
                   </div>
                 </div>
+                  
               </div>
-            </div>
-
+                
+            </div>                 
             <div
               data-tw-backdrop=""
               aria-hidden="true"
