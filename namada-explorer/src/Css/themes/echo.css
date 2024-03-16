@@ -145,4 +145,21 @@
     box-shadow: none;
     border: 1px solid rgb(226 232 240 / 80%);
   }
+  .dropdown-menu {
+    position: absolute;
+    right: calc(100% + 72px); /* Đặt phần tử ở bên trái màn hình và cách màn hình 50px */
+    top: calc(100% + 25px); /* Đặt phần tử ở phía dưới của phần chứa với một khoảng cách 10px */
+    transform: translateX(-50%); /* Di chuyển phần tử sang trái 50% của chính nó */
+  }
+  .dropdown-content {
+    position: absolute;
+    top: 50%; /* Đặt phần tử ở giữa theo chiều dọc */
+    left: 50%; /* Đặt phần tử ở giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Di chuyển phần tử điều chỉnh vị trí tương ứng với trục tọa độ */
+    transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển động */
+    /* Các thuộc tính khác */
+  }
   
+  .dropdown-content.open {
+    transform: translate(-50%, 0); /* Di chuyển phần tử xuống dưới */
+  }

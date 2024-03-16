@@ -1,7 +1,7 @@
-import TableBlock from "../../components/table/tableBlock";
+import TableContact from "../../components/table/tableContact";
 import "../../Css/themes/echo.css"
 
-const Blocks = () => {
+const Contact = () => {
 
     return (
         <>
@@ -13,12 +13,12 @@ const Blocks = () => {
                                 <div className="col-span-12">
                                     <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
                                         <div className="text-base font-medium group-[.mode--light]:text-white">
-                                            List Blocks 
+                                            Contact US 
                                         </div>
                                     </div>
                                     <div className="mt-3.5">
                                         <div className="box box--stacked flex flex-col">
-                                            <TableBlock />
+                                            <TableContact />
                                         </div>
                                     </div>
                                 </div>
@@ -31,4 +31,4 @@ const Blocks = () => {
     )
 }
 
-export default Blocks;
+export default Contact;

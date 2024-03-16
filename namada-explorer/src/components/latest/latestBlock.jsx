@@ -1,4 +1,4 @@
-import Table from "../table/table";
+import TableLatestTXH from "../table/tableLatestBlock";
 
 const LatestBlock = () => {
   return (
@@ -9,9 +9,7 @@ const LatestBlock = () => {
             <div className="text-base font-medium">Latest Blocks</div>
           </div>
           <div className="box box--stacked mt-3.5 p-5">
-
-            <Table />
-
+            <TableLatestTXH />
           </div>
         </div>
       </div>
