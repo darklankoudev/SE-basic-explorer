@@ -55,6 +55,7 @@ const Header = ({modal,readOnly}) => {
     console.log('Button clicked!');
    }
    
+
    
    const handleOpenSearchModal = () => {
     searchModalRef.current.classList.add('show');
@@ -65,6 +66,8 @@ const Header = ({modal,readOnly}) => {
     searchModalRef.current.classList.remove('show');
     setShowSearchModal(false);
   };
+
+  
 
   const [isShown, setIsShown] = useState(false);
   const [state, setState] = useState(isShown ? "enter" : "leave");
@@ -126,6 +129,20 @@ const Header = ({modal,readOnly}) => {
     }
   }, [isShown, state]);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Enter') {
+        handleCloseSearchModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleCloseSearchModal]);
+
   return (
     <>
       <div className="fixed inset-x-0 top-0 mt-3.5 h-[65px] transition-[margin] duration-100 xl:ml-[275px] group-[.side-menu--collapsed]:xl:ml-[90px]">
@@ -177,20 +194,25 @@ const Header = ({modal,readOnly}) => {
               aria-hidden="true"
               tabIndex="-1"
               ref={searchModalRef}
+       
               className="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed left-0 top-0 overflow-y-hidden z-[60] [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.1s]"
             >
+              
             
               <div className="relative mx-auto my-2 w-[95%] scale-95 transition-transform group-[.show]:scale-100 sm:mt-40 sm:w-[600px] lg:w-[700px]">
+              
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex w-12 items-center justify-center">
                     <Search className="stroke-[1] w-5 h-5 -mr-1.5 text-slate-500"/>
                   </div>
+                  
                   <input
                     data-tw-merge=""
                     type="text"
                     placeholder="Search height, txh,..."
                     className="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full border-slate-200 placeholder:text-slate-400/90 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border file:mr-4 file:py-2 file:px-4 file:rounded-l-md file:border-0 file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 rounded-lg border-0 py-3.5 pl-12 pr-14 text-base shadow-lg focus:ring-0"
                   />
+                  
                   <div className="absolute inset-y-0 right-0 flex w-14 items-center">
                     <div className="mr-auto rounded-[0.4rem] border bg-slate-100 px-2 py-1 text-xs text-slate-500/80">
                       <button
@@ -204,7 +226,9 @@ const Header = ({modal,readOnly}) => {
                     </div>
                   </div>
                 </div>
+              
               </div>
+              
             </div>
               
             <div className="flex items-center flex-1">
