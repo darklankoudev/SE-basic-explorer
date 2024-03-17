@@ -1,4 +1,8 @@
-const API_BASE_URL = "https://it.api.namada.red/api/v1";
+const API_BASE_URL = "https://it.api.namada.red/api/v1/chain";
 const API_BASE_URL_SUPPORT = "https://namada-explorer-api.stakepool.dev.br/node";
 
-export { API_BASE_URL, API_BASE_URL_SUPPORT };
+const RPC_THANHPHM_URL = "https://rpc-namada-se-dev-thanhphm.uk"
+const API_VLVN_URL = "https://indexer.validatorvn.com"
+const API_DETAIL_VALIDATOR = "https://namada.api.explorers.guru/api/validators"
+
+export { API_BASE_URL, API_BASE_URL_SUPPORT, RPC_THANHPHM_URL, API_VLVN_URL, API_DETAIL_VALIDATOR};

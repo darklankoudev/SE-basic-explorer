@@ -1,7 +1,7 @@
-import TableBlock from "../../components/table/tableBlock";
+import TableTXHSupport from "../../components/table/tableSuport/tableLatestTXHSupport";
 import "../../Css/themes/echo.css";
 
-const Blocks = () => {
+const Transactions = () => {
   return (
     <>
       <div className="content transition-[margin,width] duration-100 xl:pl-3.5 pt-[54px] pb-10 relative z-10 group mode content--compact xl:ml-[275px] mode--light [&.content--compact]:xl:ml-[91px]">
@@ -12,11 +12,11 @@ const Blocks = () => {
                 <div>
                   <div class="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
                     <div class="text-base font-medium group-[.mode--light]:text-white">
-                     List Blocks
+                      List Transactions
                     </div>
                   </div>
                   <div class="box box--stacked mt-2 p-5">
-                    <TableBlock />
+                    <TableTXH />
                   </div>
                 </div>
               </div>
@@ -28,4 +28,4 @@ const Blocks = () => {
   );
 };
 
-export default Blocks;
+export default Transactions;

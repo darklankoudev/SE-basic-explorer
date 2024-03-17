@@ -93,10 +93,10 @@ const Header = ({readOnly}) => {
             >
               <div className="flex w-[350px] cursor-pointer items-center rounded-[0.5rem] border border-transparent bg-white/[0.12] px-3.5 py-2 text-white/60 transition-colors duration-300 hover:bg-white/[0.15] hover:duration-100">
                 <Search  className="stroke-[1] h-[18px] w-[18px]"/>
-                <div className="ml-2.5 mr-auto">Quick search ...</div>
+                <div className="ml-2.5 mr-auto">Data chain search tool coming soon ...</div>
               </div>
             </div>
-            <div
+            {/* <div
               id="quick-search"
               aria-hidden="true"
               tabIndex="-1"
@@ -120,7 +120,7 @@ const Header = ({readOnly}) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="flex items-center flex-1">
               <div
                 data-tw-merge=""

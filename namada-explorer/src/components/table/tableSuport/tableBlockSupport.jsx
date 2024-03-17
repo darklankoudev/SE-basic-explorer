@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { API_BASE_URL_SUPPORT } from "../../constants/constants";
+import { API_VLVN_URL } from "../../../constants/constants";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,13 +12,14 @@ import TableRow from "@mui/material/TableRow";
 import CircularProgress from "@mui/material/CircularProgress";
 import { format as formatDate } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { BookMarked } from "lucide-react";
 
-const TableBlock = () => {
-  const [height, setHeight] = useState([]);
+const TableBlockSupport = () => {
   const [pageBlock, setPageBlock] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [currentPageAPI, setCurrentPageAPI] = useState(1);
   const navigate = useNavigate();
 
   const formatTime = (timeString) => {
@@ -50,8 +51,11 @@ const TableBlock = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL_SUPPORT}/blocks/list/5`);
-        setHeight(res.data);
+        const res = await axios.get(
+          `${API_VLVN_URL}/block?page=${currentPageAPI}&page_size=30`
+        );
+        setLoading(false);
+        setPageBlock(res.data.data);
       } catch (e) {
         console.log(e);
       }
@@ -60,55 +64,28 @@ const TableBlock = () => {
     fetchData();
   }, []);
 
-  const currentHeight = height.length > 0 ? height[0].header_height : null;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (currentHeight !== null) {
-          const res = await axios.get(
-            `${API_BASE_URL_SUPPORT}/blocks/list/20/${currentHeight}`
-          );
-          setPageBlock(res.data);
-          setLoading(false);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    if (currentHeight !== null) {
-      fetchData();
-    }
-  }, [currentHeight, height]);
-
   const handleDetailBlock = (id) => {
     navigate(`/block/detail/${id}`);
   };
 
   const columns = [
-    { id: "header_height", label: "Block Height", minWidth: 170 },
-    { id: "block_id", label: "Block Hash", minWidth: 170 },
-    { id: "header_time", label: "Age", minWidth: 175, format: calculateAge },
-    { id: "transactions_count", label: "Total Transaction", minWidth: 180 },
-    { id: "header_proposer_address", label: "Proposer", minWidth: 170 },
-    {
-      id: "header_time",
-      label: "Timestamp",
-      minWidth: 180,
-      format: formatTime,
-    },
+    { id: "height", label: "Block Height", minWidth: 170 },
+    { id: "block_id", label: "Block ID", minWidth: 170 },
+    { id: "tx_hashes", label: "Total Transactions", minWidth: 170 },
+    { id: "proposer_address", label: "Proposer", minWidth: 180 },
+    { id: "time", label: "Age", minWidth: 170, format: calculateAge },
+    { id: "time", label: "Timestamp", minWidth: 180, format: formatTime },
   ];
 
   const loadNextBlocks = async () => {
     try {
       if (pageBlock.length > 0) {
-        const lastBlockHeight = pageBlock[pageBlock.length - 1].header_height;
         const res = await axios.get(
-          `${API_BASE_URL_SUPPORT}/blocks/list/20/${lastBlockHeight - 1}`
+          `${API_VLVN_URL}/block?page=${currentPageAPI + 1}&page_size=30`
         );
-        setPageBlock([...pageBlock, ...res.data]);
+        setPageBlock([...pageBlock, ...res.data.data]);
         setLoading(false);
+        setCurrentPageAPI((prevPage) => prevPage + 1);
       }
     } catch (e) {
       console.log(e);
@@ -116,6 +93,11 @@ const TableBlock = () => {
   };
 
   const handleChangePage = (event, newPage) => {
+    if (newPage === 0 && page > 0) {
+      setCurrentPageAPI(1);
+    } else {
+      setCurrentPageAPI(newPage + 1);
+    }
     setPage(newPage);
     loadNextBlocks();
   };
@@ -125,6 +107,10 @@ const TableBlock = () => {
     setPage(0);
     loadNextBlocks();
   };
+
+  useEffect(() => {
+    // console.log("block");
+  }, [pageBlock]);
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -148,65 +134,77 @@ const TableBlock = () => {
               ))}
             </TableRow>
           </TableHead>
-          <TableBody>
-            {loading ? (
-              <TableRow>
-                <TableCell colSpan={columns.length} align="center">
-                  <CircularProgress color="success" />
-                  <div className="text-center mt-2">
-                    Please wait a few seconds
-                  </div>
-                </TableCell>
-              </TableRow>
-            ) : (
-              pageBlock
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={row.header_height}
-                  >
-                    {columns.map((column) => {
-                      const value =
-                        column.id === "header_time"
-                          ? column.label === "Age"
-                            ? calculateAge(row[column.id])
-                            : formatTime(row[column.id])
-                          : column.id === "header_height" &&
-                            column.label === "Block Height" ? (
+          {loading ? (
+            <TableRow>
+              <TableCell colSpan={columns.length} align="center">
+                <CircularProgress color="success" />
+                <div className="text-center mt-2">
+                  Please wait a few seconds
+                </div>
+              </TableCell>
+            </TableRow>
+          ) : (
+            pageBlock
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((block) => (
+                <TableRow key={block.block_id}>
+                  {columns.map((column) => {
+                    let value =
+                      column.format && column.format === calculateAge
+                        ? calculateAge(block.header[column.id])
+                        : column.format && column.format === formatTime
+                        ? formatTime(block.header[column.id])
+                        : block.header[column.id];
+                    if (column.id === "block_id") {
+                      value = block.block_id;
+                    } else if (column.id === "tx_hashes") {
+                      value = block.tx_hashes.length;
+                    } else if (column.format) {
+                      value = column.format(block.header[column.id]);
+                    } else {
+                      value = block.header[column.id];
+                    }
+                    return (
+                      <TableCell
+                        key={column.id}
+                        align="center"
+                        style={{ border: "1px solid #e0e0e0" }}
+                      >
+                        {column.id === "height" ? (
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              marginLeft: "20px",
+                            }}
+                          >
+                            <BookMarked
+                              size={15}
+                              className="stroke-[1] w-5 h-5 mr-1"
+                            />
                             <button
                               style={{
                                 background: "none",
                                 border: "none",
                                 cursor: "pointer",
+                                color: "#6495ED",
                               }}
                               onClick={() =>
-                                handleDetailBlock(row.header_height)
+                                handleDetailBlock(block.header.height)
                               }
                             >
-                              {`#${row[column.id]}`}
+                              {value}
                             </button>
-                          ) : (
-                            row[column.id]
-                          );
-                      return (
-                        <TableCell
-                          key={column.id}
-                          align="center"
-                          style={{ border: "1px solid #e0e0e0",
-                          textDecoration: column.id === "header_height" ? "underline" : "none",
-                          color: column.id === "header_height" ? "#6495ED" : "inherit", }}
-                        >
-                          {value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                ))
-            )}
-          </TableBody>
+                          </div>
+                        ) : (
+                          value
+                        )}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              ))
+          )}
         </Table>
       </TableContainer>
       <TablePagination
@@ -222,4 +220,4 @@ const TableBlock = () => {
   );
 };
 
-export default TableBlock;
+export default TableBlockSupport;

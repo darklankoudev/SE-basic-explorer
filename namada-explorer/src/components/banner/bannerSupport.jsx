@@ -7,19 +7,15 @@ import {
   Activity,
   Album,
   Database,
-  Box,
-  Package,
-  BadgeDollarSign,
-  BadgeCheck,
   ShieldCheck,
 } from "lucide-react";
-import IndexBlockValidator from "../latest";
 import axios from "axios";
 import { format } from "date-fns";
-import { API_BASE_URL_SUPPORT } from "../../constants/constants";
+import { RPC_THANHPHM_URL, API_VLVN_URL } from "../../constants/constants";
 import LinearProgress from "@mui/material/LinearProgress";
+import IndexBlockValidatorSupport from "../latest/latesSupport";
 
-const Banner = () => {
+const BannerSupport = () => {
   const [infoS, setInfoS] = useState("");
   const [infoVal, setInfoVal] = useState("");
   const [loading, setLoading] = useState(true);
@@ -33,27 +29,27 @@ const Banner = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `${API_BASE_URL_SUPPORT}/blocks/block/latest`
+          `${API_VLVN_URL}/block/last`
         );
-        const { header_chain_id, header_height, header_time } = res.data;
-        setInfoS({ header_chain_id, header_height, header_time });
+        setInfoS(res.data.header);
         setLoading(false);
       } catch (e) {
         console.log(e);
       }
 
       try {
-        const res = await axios.get(`${API_BASE_URL_SUPPORT}/validators/list`);
-        const validatorsList = res.data.currentValidatorsList;
-        const totalValidator = validatorsList.length;
-        setInfoVal(totalValidator);
+        const res = await axios.get(`${RPC_THANHPHM_URL}/validators?page=1&per_page=100`);
+        const validatorsList = res.data.result.total;
+        setInfoVal(validatorsList);
         setLoading(false);
       } catch (e) {
         console.log(e);
       }
     };
 
-    const intervalId = setInterval(fetchData, 1000);
+    // fetchData();
+
+    const intervalId = setInterval(fetchData, 5000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -106,7 +102,7 @@ const Banner = () => {
                             </div>
                           ) : (
                             <div className="mt-1 text-2xl font-medium text-white">
-                              {infoS.header_chain_id}
+                              {infoS.chain_id}
                             </div>
                           )}
                         </div>
@@ -120,8 +116,8 @@ const Banner = () => {
                             </div>
                           </div>
                           <div className="mt-1 text-2xl font-medium">
-                            {infoS.header_time ? (
-                              formatTime(infoS.header_time)
+                            {infoS.time ? (
+                              formatTime(infoS.time)
                             ) : (
                               <LinearProgress color="success" />
                             )}
@@ -143,7 +139,7 @@ const Banner = () => {
                             </div>
                           ) : (
                             <div className="mt-1 text-2xl font-medium">
-                              {infoS.header_height}
+                              {infoS.height}
                             </div>
                           )}
                         </div>
@@ -166,61 +162,6 @@ const Banner = () => {
                             </div>
                           )}
                         </div>
-                        {/* <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                            <BadgeDollarSign className="stroke-[1] h-6 w-6 fill-primary/10 text-primary" />
-                          </div>
-                          <div className="mt-5 flex items-center">
-                            <div className="text-base text-slate-500">
-                              NAAN Total Supply
-                            </div>
-                          </div>
-                          <div className="mt-1 text-2xl font-medium">1B NAAN</div>
-                        </div>
-                        <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                            <Package className="stroke-[1] h-6 w-6 fill-primary/10 text-primary" />
-                          </div>
-                          <div className="mt-5 flex items-center">
-                            <div className="text-base text-slate-500">
-                              Shielded Transfers
-                            </div>
-                          </div>
-                          <div className="mt-1 text-2xl font-medium">
-                            {info.total_shielded_txs}
-                          </div>
-                        </div>
-                        <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-info/10 bg-info/10">
-                            <Box className="stroke-[1] h-6 w-6 fill-primary/10 text-primary" />
-                          </div>
-                          <div className="mt-5 flex items-center">
-                            <div className="text-base text-slate-500">
-                              Namada Version
-                            </div>
-                          </div>
-
-                          <div className="mt-1 text-2xl font-medium">
-                            v0.31.9
-                          </div>
-                        </div>
-                        <div className="relative col-span-4 flex-1 overflow-hidden rounded-[0.6rem] border bg-slate-50/50 p-5 sm:col-span-2 xl:col-span-1">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/10 bg-primary/10">
-                            <BadgeCheck
-                              data-tw-merge=""
-                              data-lucide="layout"
-                              className="stroke-[1] h-6 w-6 fill-primary/10 text-primary"
-                            />
-                          </div>
-                          <div className="mt-5 flex items-center">
-                            <div className="text-base text-slate-500">
-                              NAAN Total Stake
-                            </div>
-                          </div>
-                          <div className="mt-1 text-2xl font-medium">
-                            273,235
-                          </div>
-                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -230,9 +171,9 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <IndexBlockValidator />
+      <IndexBlockValidatorSupport />
     </>
   );
 };
 
-export default Banner;
+export default BannerSupport;

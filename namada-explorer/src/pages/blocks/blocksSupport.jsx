@@ -1,7 +1,7 @@
-import TableBlock from "../../components/table/tableBlock";
+import TableBlockSupport from "../../components/table/tableSuport/tableBlockSupport";
 import "../../Css/themes/echo.css";
 
-const Blocks = () => {
+const BlocksSupport = () => {
   return (
     <>
       <div className="content transition-[margin,width] duration-100 xl:pl-3.5 pt-[54px] pb-10 relative z-10 group mode content--compact xl:ml-[275px] mode--light [&.content--compact]:xl:ml-[91px]">
@@ -16,7 +16,7 @@ const Blocks = () => {
                     </div>
                   </div>
                   <div class="box box--stacked mt-2 p-5">
-                    <TableBlock />
+                    <TableBlockSupport />
                   </div>
                 </div>
               </div>
@@ -28,4 +28,4 @@ const Blocks = () => {
   );
 };
 
-export default Blocks;
+export default BlocksSupport;

@@ -6664,6 +6664,15 @@ select {
 .rounded-bl-xl {
   border-bottom-left-radius: 0.75rem;
 }
+
+.rounded-bl-lg {
+  border-bottom-left-radius: 0.6rem;
+}
+
+.rounded-br-lg {
+  border-bottom-left-radius: 0.6rem;
+}
+
 .rounded-tl-lg {
   border-top-left-radius: 0.6rem;
 }

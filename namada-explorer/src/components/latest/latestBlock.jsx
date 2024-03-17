@@ -1,15 +1,17 @@
-import TableLatestTXH from "../table/tableLatestBlock";
+import TableLatestBlock from "../table/tableLatestBlock";
 
 const LatestBlock = () => {
   return (
     <>
-      <div className="col-span-12 flex flex-col gap-y-10 md:col-span-6 xl:col-span-6">
+      <div class="col-span-12 xl:col-span-12">
         <div>
-          <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
-            <div className="text-base font-medium">Latest Blocks</div>
+          <div class="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
+            <div class="text-base font-medium">
+            Latest Blocks
+            </div>
           </div>
-          <div className="box box--stacked mt-3.5 p-5">
-            <TableLatestTXH />
+          <div class="box box--stacked mt-2 p-5">
+            <TableLatestBlock />
           </div>
         </div>
       </div>
