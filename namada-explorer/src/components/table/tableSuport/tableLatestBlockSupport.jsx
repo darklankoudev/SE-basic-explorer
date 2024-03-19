@@ -4,6 +4,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import { API_VLVN_URL } from "../../../constants/constants";
 import CircularProgress from "@mui/material/CircularProgress";
+import { BookMarked } from "lucide-react";
 
 const TableLatestBlockSupport = () => {
   const [infoBlock, setInfoBlock] = useState();
@@ -39,11 +40,13 @@ const TableLatestBlockSupport = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${API_VLVN_URL}/block?page=1&page_size=5`);
+        const res = await axios.get(`${API_VLVN_URL}/block?page=1&page_size=10`);
         setInfoBlock(res.data.data);
         setLoading(false);
       } catch (e) {
-        console.log(e);
+        if (process.env.NODE_ENV === 'development') {
+          console.error(e);
+        }
       }
     };
 
@@ -52,12 +55,12 @@ const TableLatestBlockSupport = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-//   useEffect(() => {
-//     // console.log("block");
-//   }, [infoBlock]);
+  //   useEffect(() => {
+  //     // console.log("block");
+  //   }, [infoBlock]);
 
-  const handleDetailBlock = (id) => {
-    navigate(`/block/detail/${id}`);
+  const handleDetailBlock = (height) => {
+    navigate(`/block/detail/${height}`);
   };
 
   return (
@@ -82,17 +85,17 @@ const TableLatestBlockSupport = () => {
                 data-tw-merge
                 className="font-medium px-5 py-4 border-b-2 dark:border-darkmode-300 border-l border-r border-t whitespace-nowrap"
               >
-                Block ID
+                Block Hash
               </th>
               <th
                 data-tw-merge
-                className="font-medium px-10 py-4 border-b-2 dark:border-darkmode-300 border-l border-r border-t whitespace-nowrap"
+                className="font-medium px-5 py-4 border-b-2 dark:border-darkmode-300 border-l border-r border-t whitespace-nowrap"
               >
                 Total Transactions
               </th>
               <th
                 data-tw-merge
-                className="font-medium px-5 py-4 border-b-2 dark:border-darkmode-300 border-l border-r border-t whitespace-nowrap"
+                className="font-medium  px-5 py-4 border-b-2 dark:border-darkmode-300 border-l border-r border-t whitespace-nowrap"
               >
                 Proposer
               </th>
@@ -123,7 +126,8 @@ const TableLatestBlockSupport = () => {
                   </div>
                 </td>
               </tr>
-            ) : (infoBlock && 
+            ) : (
+              infoBlock &&
               infoBlock.map((block, index) => (
                 <tr
                   key={index}
@@ -136,7 +140,18 @@ const TableLatestBlockSupport = () => {
                     style={{ color: "#6495ED" }}
                     onClick={() => handleDetailBlock(block.header.height)}
                   >
-                    {block.header.height}
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <BookMarked
+                        size={15}
+                        className="stroke-[1] w-5 h-5 side-menu__link__icon mr-1"
+                      />
+                      {block.header.height}
+                    </div>
                   </td>
                   <td
                     data-tw-merge
@@ -152,7 +167,7 @@ const TableLatestBlockSupport = () => {
                   </td>
                   <td
                     data-tw-merge
-                    className="px-20 py-4 border-b dark:border-darkmode-300 border-l border-r border-t"
+                    className="px-5 py-4 border-b dark:border-darkmode-300 border-l border-r border-t"
                   >
                     {block.header.proposer_address}
                   </td>

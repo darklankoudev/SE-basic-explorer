@@ -34,7 +34,9 @@ const TableProposal = () => {
         setProposals(proposalsData);
         setLoading(false)
       } catch (e) {
-        console.log(e);
+        if (process.env.NODE_ENV === 'development') {
+          console.error(e);
+        }
       }
     };
 
@@ -62,11 +64,11 @@ const TableProposal = () => {
   const columns = [
     { id: "id", label: "#", minWidth: 100 },
     { id: "kind", label: "Type Of Proposals", minWidth: 170 },
-    { id: "author", label: "Author", minWidth: 175 },
+    { id: "author", label: "Author", minWidth: 180 },
     { id: "result", label: "Result", minWidth: 180 },
-    { id: "start_epoch", label: "Start Epoch", minWidth: 80 },
-    { id: "end_epoch", label: "End Epoch", minWidth: 80 },
-    { id: "grace_epoch", label: "Grace Epoch", minWidth: 80 },
+    { id: "start_epoch", label: "Start Epoch", minWidth: 120 },
+    { id: "end_epoch", label: "End Epoch", minWidth: 120 },
+    { id: "grace_epoch", label: "Grace Epoch", minWidth: 120 },
     // {
     //   id: "yay_votes",
     //   label: "Yay Votes (Yes)",
@@ -98,7 +100,7 @@ const TableProposal = () => {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 503 }}>
+      <TableContainer>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

@@ -1,7 +1,7 @@
-import TableTXHSupport from "../../components/table/tableSuport/tableLatestTXHSupport";
+import TableTXHSupport from "../../components/table/tableSuport/tableTXHSupport";
 import "../../Css/themes/echo.css";
 
-const Transactions = () => {
+const TransactionsSupport = () => {
   return (
     <>
       <div className="content transition-[margin,width] duration-100 xl:pl-3.5 pt-[54px] pb-10 relative z-10 group mode content--compact xl:ml-[275px] mode--light [&.content--compact]:xl:ml-[91px]">
@@ -16,7 +16,7 @@ const Transactions = () => {
                     </div>
                   </div>
                   <div class="box box--stacked mt-2 p-5">
-                    <TableTXH />
+                    <TableTXHSupport />
                   </div>
                 </div>
               </div>
@@ -28,4 +28,4 @@ const Transactions = () => {
   );
 };
 
-export default Transactions;
+export default TransactionsSupport;

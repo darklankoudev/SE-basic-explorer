@@ -26,7 +26,9 @@ const TableValidator = () => {
         // console.log(validatorsList)
         setLoading(false);
       } catch (e) {
-        console.log(e);
+        if (process.env.NODE_ENV === 'development') {
+          console.error(e);
+        }
       }
     };
 
@@ -78,7 +80,7 @@ const TableValidator = () => {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 505}}>
+      <TableContainer >
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

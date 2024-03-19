@@ -16,6 +16,8 @@ import Proposal from "../../pages/proposals/proposals";
 import BlockDetail from "../../pages/blockDetail/blockDetail";
 import BannerSupport from "../banner/bannerSupport";
 import BlocksSupport from "../../pages/blocks/blocksSupport";
+import TransactionsSupport from "../../pages/transactions/transactionsSupport";
+import TXHDetail from "../../pages/txhDetail/txhDetail";
 
 const Dashboard = () => {
     const HandleClick = (e) => {
@@ -117,19 +119,22 @@ const Dashboard = () => {
                                 </Link>
                             
                             </li>
-                            {/* <li>
+                            <li>
                                 <Link to="validators" class="side-menu__link ">
                                     <ShieldHalf size={20} class="stroke-[1] w-5 h-5 side-menu__link__icon" />
                                     <div class="side-menu__link__title">Validators</div>
                                 </Link>
                                 
-                            </li> */}
+                            </li>
                             <li>
                                 <Link to="proposals" class="side-menu__link ">
                                     <ClipboardPen size={20} class="stroke-[1] w-5 h-5 side-menu__link__icon" />
                                     <div class="side-menu__link__title">Proposals</div>
                                 </Link>
                                 
+                            </li>
+                            <li class="side-menu__divider">
+                                RANKING SE {"(Coming soon)"}
                             </li>
                             <li class="side-menu__divider">
                                 SERVICES
@@ -142,7 +147,7 @@ const Dashboard = () => {
                                 
                             </li>                    
                             <li class="side-menu__divider">
-                                Contact
+                                CONTACT
                             </li>
                             <li>
                                 <Link to="contact" class="side-menu__link ">
@@ -163,14 +168,16 @@ const Dashboard = () => {
                 <Routes>
                     {/* <Route path='/' element={<Banner />} /> */}
                     <Route path='/' element={<BannerSupport />} />
-                    {/* <Route path='transactions' element={<Transactions />} />
-                    <Route path='blocks' element={<Blocks />} /> */}
+                    {/* <Route path='transactions' element={<Transactions />} /> */}
+                    <Route path='transactions' element={<TransactionsSupport />} />
+                    {/* <Route path='blocks' element={<Blocks />} /> */}
                     <Route path='blocks' element={<BlocksSupport />} />
-                    {/* <Route path='validators'  element={<Validator />} /> */}
+                    <Route path='validators'  element={<Validator />} />
                     <Route path='proposals'  element={<Proposal />} />
                     <Route path='provider'  element={<Provider />} />
                     <Route path='contact'  element={<Contact />} />
-                    <Route path='block/detail/:id'  element={<BlockDetail />} />
+                    <Route path='block/detail/:height'  element={<BlockDetail />} />
+                    <Route path='transaction/hash/detail/:hash'  element={<TXHDetail />} />
                 </Routes>
                 
 

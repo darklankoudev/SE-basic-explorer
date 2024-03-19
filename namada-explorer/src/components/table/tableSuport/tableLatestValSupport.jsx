@@ -23,7 +23,9 @@ const TableLatestValSupport = () => {
         setResultTop10(result);
         setLoading(false);
       } catch (e) {
-        console.log(e);
+        if (process.env.NODE_ENV === 'development') {
+          console.error(e);
+        }
       }
     };
   

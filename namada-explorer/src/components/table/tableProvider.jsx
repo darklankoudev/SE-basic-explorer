@@ -27,7 +27,7 @@ const TableProvider = () => {
                                 <td className="px-5 py-4 border-b dark:border-darkmode-300 border-l border-r border-t">{endpoint.id}</td>
                                 <td className="px-5 py-4 border-b dark:border-darkmode-300 border-l border-r border-t">{endpoint.alias}</td>
                                 <td className="px-5 py-4 border-b dark:border-darkmode-300 border-l border-r border-t">
-                                    <a href={endpoint.url} target="_blank" alt="Endpoint">{endpoint.url}</a>
+                                    <a href={endpoint.url} target="_blank" alt="Endpoint" style={{color: "#6495ED"}}>{endpoint.url}</a>
                                 </td>
                                 <td className="px-5 py-4 border-b dark:border-darkmode-300 border-l border-r border-t">{endpoint.status}</td>
                             </tr>

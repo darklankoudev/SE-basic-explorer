@@ -30,7 +30,7 @@ const TableLatestTXH = () => {
     } else if (minutes > 0) {
       return `${minutes} minutes ago`;
     } else {
-      return `${seconds} seconds ago`;
+      return `a few seconds ago`;
     }
   };
 

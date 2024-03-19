@@ -44,7 +44,7 @@ const TableBlockSupport = () => {
     } else if (minutes > 0) {
       return `${minutes} minutes ago`;
     } else {
-      return `${seconds} seconds ago`;
+      return `a few seconds ago`;
     }
   };
 
@@ -64,8 +64,8 @@ const TableBlockSupport = () => {
     fetchData();
   }, []);
 
-  const handleDetailBlock = (id) => {
-    navigate(`/block/detail/${id}`);
+  const handleDetailBlock = (height) => {
+    navigate(`/block/detail/${height}`);
   };
 
   const columns = [
@@ -114,7 +114,7 @@ const TableBlockSupport = () => {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 503 }}>
+      <TableContainer>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -180,7 +180,7 @@ const TableBlockSupport = () => {
                           >
                             <BookMarked
                               size={15}
-                              className="stroke-[1] w-5 h-5 mr-1"
+                              className="stroke-[1] w-5 h-5 side-menu__link__icon mr-1"
                             />
                             <button
                               style={{
