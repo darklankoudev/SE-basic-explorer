@@ -113,6 +113,7 @@ const Contact = () => {
                                       style={{
                                         color: "#6495ED",
                                       }}
+                                      rel="noreferrer"
                                     >
                                       https://twitter.com/Andytruong3979
                                     </a>
