@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "namada-explorer"
+    "default": "explorer-namada"
   }
 }
