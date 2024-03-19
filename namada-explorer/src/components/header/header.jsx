@@ -168,6 +168,10 @@ const Header = ({ modal, readOnly }) => {
     }
   };
 
+  const handleOnclick = () => {
+    navigate("/")
+  }
+
   
 
   return (
@@ -274,13 +278,14 @@ const Header = ({ modal, readOnly }) => {
                 onClick={() => setIsShown(!isShown)}
               >
                 <button
+                  onClick={handleOnclick}
                   data-tw-toggle="dropdown"
                   aria-expanded="false"
                   className="cursor-pointer image-fit h-[40px] w-[40px] overflow-hidden rounded-full border-[3px] border-white/[0.15]"
                 >
                   <img src={logoNamada} alt="Namada Explorer" />
                 </button>
-                <div
+                {/* <div
                   ref={elRef}
                   data-transition="true"
                   data-selector=".show"
@@ -299,10 +304,10 @@ const Header = ({ modal, readOnly }) => {
                       Choose Chain
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
-            <div
+            {/* <div
               data-tw-backdrop=""
               aria-hidden="true"
               tabIndex="-1"
@@ -319,9 +324,6 @@ const Header = ({ modal, readOnly }) => {
                 <div data-tw-merge="" className="p-5 px-2.5 pb-4 pt-3.5">
                   <div className="flex flex-col gap-1.5">
                     <div className="flex cursor-pointer items-center rounded-lg px-2.5 py-1 hover:bg-slate-100">
-                      {/* <!-- <div className="image-fit h-11 w-11 overflow-hidden rounded-full border-[3px] border-slate-200/70">
-                                                        <img src="dist/images/users/user8-50x50.jpg" alt="Tailwise - Admin Dashboard Template">
-                                                    </div> --> */}
                       <div className="ml-3.5">
                         <div className="font-medium">Namada</div>
                         <div className="mt-0.5 text-xs text-slate-500">
@@ -333,7 +335,6 @@ const Header = ({ modal, readOnly }) => {
                           readOnly={readOnly}
                           data-tw-merge=""
                           defaultChecked={true}
-                          // checked=""
                           type="checkbox"
                           className="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer rounded focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50 peer absolute z-10 h-full w-full opacity-0"
                           id="switch-account-0"
@@ -352,7 +353,7 @@ const Header = ({ modal, readOnly }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
