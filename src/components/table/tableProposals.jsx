@@ -19,12 +19,6 @@ const TableProposal = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [loading, setLoading] = useState(true);
 
-  const votingPowerFormatted = (number) => {
-    return (number / 1000000).toLocaleString(undefined, {
-      maximumFractionDigits: 2,
-    });
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,50 +37,70 @@ const TableProposal = () => {
     fetchData();
   }, []);
 
-  const formatVotes = (votes) => {
-    return (votes / 1000000000000).toLocaleString(undefined, {
-      maximumFractionDigits: 2 ,
+  const formatVotesPercentage = (votes, totalVotes) => {
+    const percentage = (votes / totalVotes) * 100;
+    return percentage.toLocaleString(undefined, {
+      maximumFractionDigits: 2,
     }) + "%";
   };
-
+  
   const formatYayVotes = (row) => {
-    return formatVotes(row.yay_votes);
+    const yayVotes = parseInt(row.yay_votes);
+    const totalVotes = yayVotes + parseInt(row.nay_votes) + parseInt(row.abstain_votes);
+    if (yayVotes === 0) {
+      return "0";
+    }
+    return formatVotesPercentage(yayVotes, totalVotes);
   };
-
+  
   const formatNayVotes = (row) => {
-    return formatVotes(row.nay_votes);
+    const nayVotes = parseInt(row.nay_votes);
+    const totalVotes = parseInt(row.yay_votes) + nayVotes + parseInt(row.abstain_votes);
+    if (nayVotes === 0) {
+      return "0";
+    }
+    return formatVotesPercentage(nayVotes, totalVotes);
   };
-
+  
   const formatAbstainVotes = (row) => {
-    return formatVotes(row.abstain_votes);
+    const abstainVotes = parseInt(row.abstain_votes);
+    const totalVotes = parseInt(row.yay_votes) + parseInt(row.nay_votes) + abstainVotes;
+    if (abstainVotes === 0) {
+      return "0";
+    }
+    return formatVotesPercentage(abstainVotes, totalVotes);
   };
-
+  
+  
   const columns = [
-    { id: "id", label: "#", minWidth: 100 },
-    { id: "kind", label: "Type Of Proposals", minWidth: 170 },
+    { id: "id", label: "#", minWidth: 75, align: "center" },
+    { id: "kind", label: "Type Of Proposals", minWidth: 170, align: "center" },
     { id: "author", label: "Author", minWidth: 180 },
-    { id: "result", label: "Result", minWidth: 180 },
-    { id: "start_epoch", label: "Start Epoch", minWidth: 120 },
-    { id: "end_epoch", label: "End Epoch", minWidth: 120 },
-    { id: "grace_epoch", label: "Grace Epoch", minWidth: 120 },
-    // {
-    //   id: "yay_votes",
-    //   label: "Yay Votes (Yes)",
-    //   minWidth: 170,
-    //     format: formatYayVotes,
-    // },
-    // {
-    //   id: "nay_votes",
-    //   label: "Nay Votes (No)",
-    //   minWidth: 170,
-    //     format: formatNayVotes,
-    // },
-    // {
-    //   id: "abstain_votes",
-    //   label: "Abstain Votes (Abstain)",
-    //   minWidth: 190,
-    //     format: formatAbstainVotes,
-    // },
+    { id: "result", label: "Result", minWidth: 180, align: "center" },
+    { id: "start_epoch", label: "Start Epoch", minWidth: 120, align: "center" },
+    { id: "end_epoch", label: "End Epoch", minWidth: 120, align: "center" },
+    { id: "grace_epoch", label: "Grace Epoch", minWidth: 120, align: "center" },
+    {
+      id: "yay_votes",
+      label: "Yay Votes (Yes)",
+      minWidth: 170,
+        format: formatYayVotes,
+        align: "center"
+    },
+    {
+      id: "nay_votes",
+      label: "Nay Votes (No)",
+      minWidth: 170,
+        format: formatNayVotes,
+        align: "center"
+    },
+    {
+      id: "abstain_votes",
+      label: "Abstain Votes (Abstain)",
+      minWidth: 190,
+        format: formatAbstainVotes,
+        align: "center"
+    },
   ];
 
   const handleChangePage = (event, newPage) => {
