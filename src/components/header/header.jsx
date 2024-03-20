@@ -224,7 +224,7 @@ const Header = ({ modal, readOnly }) => {
             >
               <div className="flex w-[350px] cursor-pointer items-center rounded-[0.5rem] border border-transparent bg-white/[0.12] px-3.5 py-2 text-white/60 transition-colors duration-300 hover:bg-white/[0.15] hover:duration-100">
                 <Search className="stroke-[1] h-[18px] w-[18px]" />
-                <div className="ml-2.5 mr-auto">Quick search ...</div>
+                <div className="ml-2.5 mr-auto">Quick search...</div>
               </div>
             </div>
 
@@ -246,7 +246,7 @@ const Header = ({ modal, readOnly }) => {
                     data-tw-merge=""
                     onKeyDown={handleSearch}
                     type="search"
-                    placeholder="Search height, txh,..."
+                    placeholder="Search block height, transaction hash"
                     className="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full border-slate-200 placeholder:text-slate-400/90 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border file:mr-4 file:py-2 file:px-4 file:rounded-l-md file:border-0 file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 rounded-lg border-0 py-3.5 pl-12 pr-14 text-base shadow-lg focus:ring-0"
                   />
 
@@ -285,75 +285,8 @@ const Header = ({ modal, readOnly }) => {
                 >
                   <img src={logoNamada} alt="Namada Explorer" />
                 </button>
-                {/* <div
-                  ref={elRef}
-                  data-transition="true"
-                  data-selector=".show"
-                  className="dropdown-menu absolute z-[9999] hidden"
-                >
-                  <div
-                    data-tw-merge=""
-                    className="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-56 mt-1"
-                  >
-                    <a
-                      data-tw-toggle="modal"
-                      data-tw-target="#switch-account"
-                      className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"
-                    >
-                      <ToggleLeft className="stroke-[1] w-4 h-4 mr-2" />
-                      Choose Chain
-                    </a>
-                  </div>
-                </div> */}
               </div>
             </div>
-            {/* <div
-              data-tw-backdrop=""
-              aria-hidden="true"
-              tabIndex="-1"
-              id="switch-account"
-              className="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed left-0 top-0 [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.4s]"
-            >
-              <div
-                data-tw-merge=""
-                className="w-[90%] mx-auto bg-white relative rounded-md shadow-md transition-[margin-top,transform] duration-[0.4s,0.3s] -mt-16 group-[.show]:mt-16 group-[.modal-static]:scale-[1.05] dark:bg-darkmode-600 sm:w-[460px]"
-              >
-                <div className="flex items-center px-5 py-3 border-b border-slate-200/60 dark:border-darkmode-400 h-14 justify-center">
-                  <h2 className="text-base font-medium">Swicth Chain</h2>
-                </div>
-                <div data-tw-merge="" className="p-5 px-2.5 pb-4 pt-3.5">
-                  <div className="flex flex-col gap-1.5">
-                    <div className="flex cursor-pointer items-center rounded-lg px-2.5 py-1 hover:bg-slate-100">
-                      <div className="ml-3.5">
-                        <div className="font-medium">Namada</div>
-                        <div className="mt-0.5 text-xs text-slate-500">
-                          shielded-expedition.88f17d1d14
-                        </div>
-                      </div>
-                      <div className="relative ml-auto h-7 w-7">
-                        <input
-                          readOnly={readOnly}
-                          data-tw-merge=""
-                          defaultChecked={true}
-                          type="checkbox"
-                          className="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer rounded focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50 peer absolute z-10 h-full w-full opacity-0"
-                          id="switch-account-0"
-                          value="switch-account"
-                        />
-                        <div className="absolute inset-0 m-auto flex h-6 w-6 items-center justify-center rounded-full border border-theme-1 bg-theme-1/80 text-white opacity-0 transition-all peer-checked:opacity-100">
-                          <i
-                            data-tw-merge=""
-                            data-lucide="check"
-                            className="h-3 w-3 stroke-[1.5]"
-                          ></i>
-                        </div>
-                        <div className="absolute inset-0 m-auto flex h-6 w-6 items-center justify-center rounded-full border border-theme-1/20 bg-theme-1/5 text-primary transition-all peer-checked:opacity-0 peer-hover:bg-theme-1/10"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
