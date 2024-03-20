@@ -170,7 +170,7 @@ const TXHDetail = () => {
               <div>
                 <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
                   <div className="text-base font-medium group-[.mode--light]:text-white">
-                    Block Overview
+                    Transaction Overview
                   </div>
                 </div>
                 <div className="box box--stacked mt-2 p-5">
@@ -273,6 +273,7 @@ const TXHDetail = () => {
                                     <Info className="ml-1.5 h-4 w-4 text-slate-400"></Info>
                                   </div>
                                 </td>
+
                                 <td
                                   data-tw-merge=""
                                   className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
@@ -280,6 +281,30 @@ const TXHDetail = () => {
                                   <div className="text-center flex items-center justify-center">
                                     <BookMarked className="stroke-[1] w-5 h-4.5 side-menu__link__icon mr-1" />
                                     {infoDetailTXH.height}
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr
+                                data-tw-merge=""
+                                className="[&_td]:last:border-b-0"
+                              >
+                                <td
+                                  data-tw-merge=""
+                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                >
+                                  <div className="flex text-md font-semibold items-center whitespace-nowrap">
+                                    Gas
+                                    <Info className="ml-1.5 h-4 w-4 text-slate-400"></Info>
+                                  </div>
+                                </td>
+                                
+                                <td
+                                  data-tw-merge=""
+                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                >
+                                  <div className="text-center flex items-center justify-center">
+                                    {infoDetailTXH.fee_amount_per_gas_unit * 1}
+                                    {" NAAN"}
                                   </div>
                                 </td>
                               </tr>
