@@ -82,19 +82,21 @@ const BlockDetail = () => {
         setTxhOfBlock(txhArray);
         setLoading(false);
       } catch (e) {
-        if (process.env.NODE_ENV === 'development') {
+        if (process.env.NODE_ENV === "development") {
           console.error(e);
         }
       }
 
       try {
-        const resValSigned = await axios.get(`${API_BASE_URL_SUPPORT}/blocks/block/${height}/signatures`);
-        setInfoDetailBlock(prevState => ({
+        const resValSigned = await axios.get(
+          `${API_BASE_URL_SUPPORT}/blocks/block/${height}/signatures`
+        );
+        setInfoDetailBlock((prevState) => ({
           ...prevState,
-          signatures: resValSigned.data
+          signatures: resValSigned.data,
         }));
       } catch (e) {
-        if (process.env.NODE_ENV === 'development') {
+        if (process.env.NODE_ENV === "development") {
           console.error(e);
         }
       }
@@ -139,10 +141,11 @@ const BlockDetail = () => {
                                   className="px-5 flex flex-col items-center justify-center text-base border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <CircularProgress color="success" />
-                                  <div className="text-center mt-2">Please wait a few seconds</div>
+                                  <div className="text-center mt-2">
+                                    Please wait a few seconds
+                                  </div>
                                 </td>
                               </tr>
-
                             ) : infoDetailBlock && infoDetailBlock.header ? (
                               <>
                                 <tr
@@ -208,7 +211,8 @@ const BlockDetail = () => {
                                     className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="text-center">
-                                    {infoDetailBlock.signatures && infoDetailBlock.signatures.length}
+                                      {infoDetailBlock.signatures &&
+                                        infoDetailBlock.signatures.length}
                                     </div>
                                   </td>
                                 </tr>
@@ -321,7 +325,7 @@ const BlockDetail = () => {
                                   data-tw-merge=""
                                   className="px-5 flex justify-center text-lg font-medium border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
-                                  Invalid Block Height 
+                                  Invalid Block Height
                                 </td>
                               </tr>
                             )}
@@ -463,6 +467,35 @@ const BlockDetail = () => {
                                       </TableRow>
                                     );
                                   })}
+                                {txhOfBlock.length === 0 ? (
+                                  <TableRow>
+                                    <TableCell
+                                      colSpan={columns.length}
+                                      align="center"
+                                      style={{fontSize: '1.11em'}}
+                                    >
+                                      No Transaction
+                                    </TableCell>
+                                  </TableRow>
+                                ) : (
+                                  txhOfBlock
+                                    .slice(
+                                      page * rowsPerPage,
+                                      page * rowsPerPage + rowsPerPage
+                                    )
+                                    .map((row, index) => {
+                                      return (
+                                        <TableRow
+                                          hover
+                                          role="checkbox"
+                                          tabIndex={-1}
+                                          key={row.hash_id}
+                                        >
+                                          {/* Các ô dữ liệu của hàng */}
+                                        </TableRow>
+                                      );
+                                    })
+                                )}
                               </TableBody>
                             </Table>
                           </TableContainer>
@@ -479,34 +512,38 @@ const BlockDetail = () => {
                       </div>
                     </div>
                   </div>
-                
-              <div className="col-span-12 xl:col-span-12">
-                  <div>
-                    <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
-                      <div className="text-base font-medium text-center flex items-center xl:col-span-6  ">Raw Data Of Block 
-                      <BookMarked className="stroke-[1] w-4 h-4 side-menu__link__icon ml-1.5 mr-0.5 " />
-                      {height} 
+
+                  <div className="col-span-12 xl:col-span-12">
+                    <div>
+                      <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
+                        <div className="text-base font-medium text-center flex items-center xl:col-span-6  ">
+                          Raw Data Of Block
+                          <BookMarked className="stroke-[1] w-4 h-4 side-menu__link__icon ml-1.5 mr-0.5 " />
+                          {height}
+                        </div>
+                      </div>
+                      <div className="box mt-2 p-5 bg-slate-300">
+                        <Paper sx={{ width: "100%", overflow: "hidden" }}>
+                          <TableContainer
+                            sx={{ maxHeight: 700 }}
+                            className="bg-slate-100"
+                          >
+                            <Table stickyHeader aria-label="sticky table">
+                              <TableBody>
+                                <TableCell>
+                                  <ReactJson src={infoDetailBlock} />
+                                </TableCell>
+                              </TableBody>
+                            </Table>
+                          </TableContainer>
+                        </Paper>
                       </div>
                     </div>
-                    <div className="box mt-2 p-5 bg-slate-300">
-                      <Paper sx={{ width: "100%", overflow: "hidden" }}>
-                        <TableContainer sx={{ maxHeight: 700 }} className="bg-slate-100">
-                          <Table stickyHeader aria-label="sticky table">
-                            <TableBody>
-                              <TableCell>
-                                <ReactJson src={infoDetailBlock} />
-                              </TableCell>
-                            </TableBody>
-                          </Table>
-                        </TableContainer>
-                      </Paper>
-                    </div>
                   </div>
-                </div>
                 </>
-                 ) : (
-                  " "
-                )}
+              ) : (
+                " "
+              )}
             </div>
           </div>
         </div>
