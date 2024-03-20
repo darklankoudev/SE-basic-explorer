@@ -409,9 +409,9 @@ const TXHDetail = () => {
                     <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
                       <div className="text-base font-medium ">Raw Data</div>
                     </div>
-                    <div className="box mt-2 p-5">
+                    <div className="box mt-2 p-5 bg-slate-300">
                       <Paper sx={{ width: "100%", overflow: "hidden" }}>
-                        <TableContainer sx={{ maxHeight: 700 }}>
+                        <TableContainer sx={{ maxHeight: 700 }} className="bg-slate-100">
                           <Table stickyHeader aria-label="sticky table">
                             <TableBody>
                               <TableCell>

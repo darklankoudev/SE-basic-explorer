@@ -14,6 +14,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { format as formatDate } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { ActivitySquare, Ban, CheckCheck, BookMarked } from "lucide-react";
+import { LinearProgress } from "@mui/material";
 
 const TableTXHSupport = () => {
   const [pageTXH, setPageTXH] = useState([]);
@@ -30,7 +31,7 @@ const TableTXHSupport = () => {
         return formatDate(date, "dd/MM/yyyy HH:mm:ss");
       }
     }
-    return "Invalid time";
+    return <LinearProgress color="inherit" />;
   };
 
   const calculateAge = (timeString) => {
@@ -49,9 +50,11 @@ const TableTXHSupport = () => {
       return `${hours} hours ago`;
     } else if (minutes > 0) {
       return `${minutes} minutes ago`;
-    } else {
+    } else if (seconds >= 0) {
       return `a few seconds ago`;
     }
+
+    return <LinearProgress color="inherit" />
   };
 
   const formatStatus = (returnCode) => {
@@ -168,7 +171,7 @@ const TableTXHSupport = () => {
   const columns = [
     { id: "shielded", label: "Shielded", minWidth: 70 },
     { id: "hash", label: "Transaction Hash", minWidth: 171 },
-    { id: "height", label: "Height", minWidth: 171 },
+    { id: "height", label: "Height", minWidth: 171},
     { id: "type", label: "Type", minWidth: 180 },
     { id: "return_code", label: "Status", minWidth: 180, format: formatStatus },
     { id: "age", label: "Age", minWidth: 180, format: calculateAge },
@@ -302,26 +305,30 @@ const TableTXHSupport = () => {
                             </button>
                           </div>
                         ) : column.id === "height" ? (
-                          <div
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              marginLeft: "25px"
-                            }}
-                          >
-                            <BookMarked className="stroke-[1] w-5 h-5 side-menu__link__icon mr-1" />
-                            <button
+                          TXH.height ? (
+                            <div
                               style={{
-                                background: "none",
-                                border: "none",
-                                cursor: "pointer",
-                                color: "#6495ED",
+                                display: "flex",
+                                alignItems: "center",
+                                marginLeft: "25px"
                               }}
-                              onClick={() => handleDetailBlock(TXH.height)}
                             >
-                              {value}
-                            </button>
-                          </div>
+                              <BookMarked className="stroke-[1] w-5 h-5 side-menu__link__icon mr-1" />
+                              <button
+                                style={{
+                                  background: "none",
+                                  border: "none",
+                                  cursor: "pointer",
+                                  color: "#6495ED",
+                                }}
+                                onClick={() => handleDetailBlock(TXH.height)}
+                              >
+                                {TXH.height}
+                              </button>
+                            </div>
+                          ) : (
+                            <LinearProgress color="inherit" />
+                          )
                         ) : (
                           value
                         )}

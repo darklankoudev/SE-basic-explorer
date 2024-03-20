@@ -1,6 +1,6 @@
 import { BookMarked, Info } from "lucide-react";
 import axios from "axios";
-import { API_VLVN_URL } from "../../constants/constants";
+import { API_VLVN_URL, API_BASE_URL_SUPPORT } from "../../constants/constants";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { format as formatDate } from "date-fns";
@@ -15,6 +15,7 @@ import TableRow from "@mui/material/TableRow";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
 import { ActivitySquare } from "lucide-react";
+import ReactJson from "react-json-view";
 
 const BlockDetail = () => {
   const [infoDetailBlock, setInfoDetailBlock] = useState([]);
@@ -80,6 +81,18 @@ const BlockDetail = () => {
         }));
         setTxhOfBlock(txhArray);
         setLoading(false);
+      } catch (e) {
+        if (process.env.NODE_ENV === 'development') {
+          console.error(e);
+        }
+      }
+
+      try {
+        const resValSigned = await axios.get(`${API_BASE_URL_SUPPORT}/blocks/block/${height}/signatures`);
+        setInfoDetailBlock(prevState => ({
+          ...prevState,
+          signatures: resValSigned.data
+        }));
       } catch (e) {
         if (process.env.NODE_ENV === 'development') {
           console.error(e);
@@ -174,6 +187,28 @@ const BlockDetail = () => {
                                   >
                                     <div className="text-center">
                                       {infoDetailBlock.tx_hashes.length}
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr
+                                  data-tw-merge=""
+                                  className="[&_td]:last:border-b-0"
+                                >
+                                  <td
+                                    data-tw-merge=""
+                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  >
+                                    <div className="flex text-md font-semibold items-center whitespace-nowrap">
+                                      Total Validator Signed
+                                      <Info className="ml-1.5 h-4 w-4 text-slate-400"></Info>
+                                    </div>
+                                  </td>
+                                  <td
+                                    data-tw-merge=""
+                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  >
+                                    <div className="text-center">
+                                    {infoDetailBlock.signatures && infoDetailBlock.signatures.length}
                                     </div>
                                   </td>
                                 </tr>
@@ -315,7 +350,7 @@ const BlockDetail = () => {
                     <div>
                       <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
                         <div className="text-base font-medium text-center flex items-center xl:col-span-6 ">
-                          Transactions Of{" "}
+                          Transactions Of Block{" "}
                           <BookMarked className="stroke-[1] w-4 h-4 side-menu__link__icon ml-1.5 mr-0.5 " />
                           {height}
                         </div>
@@ -444,10 +479,34 @@ const BlockDetail = () => {
                       </div>
                     </div>
                   </div>
+                
+              <div className="col-span-12 xl:col-span-12">
+                  <div>
+                    <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
+                      <div className="text-base font-medium text-center flex items-center xl:col-span-6  ">Raw Data Of Block 
+                      <BookMarked className="stroke-[1] w-4 h-4 side-menu__link__icon ml-1.5 mr-0.5 " />
+                      {height} 
+                      </div>
+                    </div>
+                    <div className="box mt-2 p-5 bg-slate-300">
+                      <Paper sx={{ width: "100%", overflow: "hidden" }}>
+                        <TableContainer sx={{ maxHeight: 700 }} className="bg-slate-100">
+                          <Table stickyHeader aria-label="sticky table">
+                            <TableBody>
+                              <TableCell>
+                                <ReactJson src={infoDetailBlock} />
+                              </TableCell>
+                            </TableBody>
+                          </Table>
+                        </TableContainer>
+                      </Paper>
+                    </div>
+                  </div>
+                </div>
                 </>
-              ) : (
-                " "
-              )}
+                 ) : (
+                  " "
+                )}
             </div>
           </div>
         </div>
