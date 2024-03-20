@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { API_DETAIL_VALIDATOR, API_MATCH_VALIDATOR } from "../../../constants/constants";
+import { API_DETAIL_VALIDATOR } from "../../../constants/constants";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const TableLatestValSupport = () => {
