@@ -124,10 +124,10 @@ const BlockDetail = () => {
                       Block Overview
                     </div>
                   </div>
-                  <div className="box box--stacked mt-2 p-5">
-                    <div className=" rounded-lg border border-slate-200/80 ">
+                  <div className="box box--stacked mt-2 p-5 ">
+                    <div className=" rounded-lg border-2 border-slate-300 ">
                       <div className="overflow-auto xl:overflow-visible">
-                        <table data-tw-merge="" className="w-full text-left">
+                        <table data-tw-merge="" className="w-full text-left ">
                           <tbody>
                             {loading ? (
                               <tr
@@ -136,7 +136,7 @@ const BlockDetail = () => {
                               >
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 flex flex-col items-center justify-center text-base border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 flex flex-col items-center justify-center text-base border-b dark:border-darkmode-300 border-dashed border-slate-400/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <CircularProgress color="success" />
                                   <div className="text-center mt-2">Please wait a few seconds</div>
@@ -151,7 +151,7 @@ const BlockDetail = () => {
                                 >
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                       Block Height
@@ -160,7 +160,7 @@ const BlockDetail = () => {
                                   </td>
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 text-md font-medium--dark border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 text-md font-medium--dark border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="text-center flex items-center justify-center">
                                       <BookMarked className="stroke-[1] w-4 h-4 side-menu__link__icon mr-1" />
@@ -174,7 +174,7 @@ const BlockDetail = () => {
                                 >
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                       Total Transaction
@@ -183,7 +183,7 @@ const BlockDetail = () => {
                                   </td>
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="text-center">
                                       {infoDetailBlock.tx_hashes.length}
@@ -196,7 +196,7 @@ const BlockDetail = () => {
                                 >
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                       Total Validator Signed
@@ -205,7 +205,7 @@ const BlockDetail = () => {
                                   </td>
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="text-center">
                                     {infoDetailBlock.signatures && infoDetailBlock.signatures.length}
@@ -218,7 +218,7 @@ const BlockDetail = () => {
                                 >
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                       Timestamp
@@ -227,7 +227,7 @@ const BlockDetail = () => {
                                   </td>
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 text-md font-medium--dark border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 text-md font-medium--dark border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="text-center flex items-center justify-center">
                                       <div className="text-center mr-2">
@@ -251,7 +251,7 @@ const BlockDetail = () => {
                                 >
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                       Proposer
@@ -260,7 +260,7 @@ const BlockDetail = () => {
                                   </td>
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="text-center">
                                       {infoDetailBlock.header.proposer_address}
@@ -273,7 +273,7 @@ const BlockDetail = () => {
                                 >
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                       Block ID
@@ -282,7 +282,7 @@ const BlockDetail = () => {
                                   </td>
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 dark:border-darkmode-300 border-dashed border-slate-300 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="text-center">
                                       {infoDetailBlock.block_id}
@@ -295,7 +295,7 @@ const BlockDetail = () => {
                                 >
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                       Chain ID
@@ -304,7 +304,7 @@ const BlockDetail = () => {
                                   </td>
                                   <td
                                     data-tw-merge=""
-                                    className="px-5 text-md font-bold border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                    className="px-5 text-md font-bold border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                   >
                                     <div className="text-center">
                                       {infoDetailBlock.header.chain_id}

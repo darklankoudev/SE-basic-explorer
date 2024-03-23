@@ -6529,6 +6529,13 @@ select {
 .gap-y-10 {
   row-gap: 2.5rem;
 }
+.gap-y-11 {
+  row-gap: 3rem;
+}
+
+.gap-y-12 {
+  row-gap: 3.5rem;
+}
 .gap-y-2 {
   row-gap: 0.5rem;
 }
@@ -7886,6 +7893,12 @@ select {
 }
 .pb-10 {
   padding-bottom: 2.5rem;
+}
+.pb-11 {
+  padding-bottom: 3rem;
+}
+.pb-12 {
+  padding-bottom: 3.5rem;
 }
 .pb-16 {
   padding-bottom: 4rem;
@@ -11088,6 +11101,12 @@ select {
   }
   .md\:h-10 {
     height: 2.5rem;
+  }
+  .md\:h-12 {
+    height: 3rem;
+  }
+  .md\:h-14 {
+    height: 3.5rem;
   }
   .md\:w-24 {
     width: 6rem;

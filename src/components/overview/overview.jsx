@@ -18,6 +18,8 @@ import BannerSupport from "../banner/bannerSupport";
 import BlocksSupport from "../../pages/blocks/blocksSupport";
 import TransactionsSupport from "../../pages/transactions/transactionsSupport";
 import TXHDetail from "../../pages/txhDetail/txhDetail";
+import ProposalSupport from "../../pages/proposals/proposalsSupport";
+import ProposalDetail from "../../pages/proposalDetail/proposalDetail";
 
 const Dashboard = () => {
     const HandleClick = (e) => {
@@ -173,11 +175,13 @@ const Dashboard = () => {
                     {/* <Route path='blocks' element={<Blocks />} /> */}
                     <Route path='blocks' element={<BlocksSupport />} />
                     <Route path='validators'  element={<Validator />} />
-                    <Route path='proposals'  element={<Proposal />} />
+                    {/* <Route path='proposals'  element={<Proposal />} /> */}
+                    <Route path='proposals'  element={<ProposalSupport />} />
                     <Route path='provider'  element={<Provider />} />
                     <Route path='contact'  element={<Contact />} />
                     <Route path='block/detail/:height'  element={<BlockDetail />} />
                     <Route path='transaction/hash/detail/:hash'  element={<TXHDetail />} />
+                    <Route path='proposal/id/:id'  element={<ProposalDetail />} />
                 </Routes>
                 
 

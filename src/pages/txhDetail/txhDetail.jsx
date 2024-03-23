@@ -174,7 +174,7 @@ const TXHDetail = () => {
                   </div>
                 </div>
                 <div className="box box--stacked mt-2 p-5">
-                  <div className=" rounded-lg border border-slate-200/80 ">
+                  <div className=" rounded-lg border-2 border-slate-300 ">
                     <div className="overflow-auto xl:overflow-visible">
                       <table data-tw-merge="" className="w-full text-left">
                         <tbody>
@@ -185,7 +185,7 @@ const TXHDetail = () => {
                             >
                               <td
                                 data-tw-merge=""
-                                className="px-5 flex flex-col items-center justify-center text-base border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                className="px-5 flex flex-col items-center justify-center text-base border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                               >
                                 <CircularProgress color="success" />
                                 <div className="text-center mt-2">Please wait a few seconds</div>
@@ -199,7 +199,7 @@ const TXHDetail = () => {
                               >
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                     Transaction Hash
@@ -208,7 +208,7 @@ const TXHDetail = () => {
                                 </td>
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 text-md font-medium--dark border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 text-md font-medium--dark border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="text-center flex items-center justify-center">
                                     <ActivitySquare className="stroke-[1] w-5 h-5 side-menu__link__icon mr-1" />
@@ -222,7 +222,7 @@ const TXHDetail = () => {
                               >
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                     Type Of
@@ -231,7 +231,7 @@ const TXHDetail = () => {
                                 </td>
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 text-md border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 text-md border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="text-center">
                                     {formatType(infoDetailTXH)}
@@ -244,7 +244,7 @@ const TXHDetail = () => {
                               >
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                     Status
@@ -253,7 +253,7 @@ const TXHDetail = () => {
                                 </td>
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="text-center">
                                     {formatStatus(infoDetailTXH.return_code)}
@@ -266,7 +266,7 @@ const TXHDetail = () => {
                               >
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                     Block Height
@@ -276,7 +276,7 @@ const TXHDetail = () => {
 
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="text-center flex items-center justify-center">
                                     <BookMarked className="stroke-[1] w-5 h-4.5 side-menu__link__icon mr-1" />
@@ -290,7 +290,7 @@ const TXHDetail = () => {
                               >
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                     Gas
@@ -300,7 +300,7 @@ const TXHDetail = () => {
                                 
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="text-center flex items-center justify-center">
                                     {infoDetailTXH.fee_amount_per_gas_unit * 1}
@@ -314,7 +314,7 @@ const TXHDetail = () => {
                               >
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                     Shielded
@@ -323,7 +323,7 @@ const TXHDetail = () => {
                                 </td>
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   {/* <div className="text-center"> */}
                                     {formatShielded(infoDetailTXH)}
@@ -336,7 +336,7 @@ const TXHDetail = () => {
                               >
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                     Timestamp
@@ -345,7 +345,7 @@ const TXHDetail = () => {
                                 </td>
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 text-md font-medium--dark border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 text-md font-medium--dark border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="text-center flex items-center justify-center">
                                     <div className="text-center mr-2">
@@ -363,7 +363,7 @@ const TXHDetail = () => {
                               >
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 border-b-2 border-r-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="flex text-md font-semibold items-center whitespace-nowrap">
                                     Chain ID
@@ -372,7 +372,7 @@ const TXHDetail = () => {
                                 </td>
                                 <td
                                   data-tw-merge=""
-                                  className="px-5 text-md font-bold border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                  className="px-5 text-md font-bold border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                                 >
                                   <div className="text-center">
                                     {infoDetailTXH.chain_id}
@@ -387,7 +387,7 @@ const TXHDetail = () => {
                             >
                               <td
                                 data-tw-merge=""
-                                className="px-5 flex justify-center text-lg font-medium border-b dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
+                                className="px-5 flex justify-center text-lg font-medium border-b-2 dark:border-darkmode-300 border-dashed border-slate-300/70 py-3 dark:bg-darkmode-600"
                               >
                                 Invalid Transaction Hash
                               </td>
